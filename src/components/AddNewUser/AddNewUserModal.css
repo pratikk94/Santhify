@@ -1,0 +1,62 @@
+.add-new-user-modal .modal-header {
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  
+  .add-new-user-modal .modal-header h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .add-new-user-modal .modal-header p {
+    font-size: 14px;
+    color: #777;
+    margin: 0;
+  }
+  
+  .add-new-user-modal .modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .add-new-user-modal .form-row {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .add-new-user-modal .form-input {
+    flex: 1;
+    height: 40px;
+    border-radius: 8px;
+  }
+  
+  .add-new-user-modal .form-input .ant-input-prefix {
+    color: #999;
+  }
+  
+  .add-new-user-modal .country-flag {
+    width: 20px;
+    height: 15px;
+    margin-right: 8px;
+  }
+  
+  .add-new-user-modal .modal-footer {
+    text-align: right;
+    margin-top: 24px;
+  }
+  
+  .add-new-user-modal .next-button {
+    background-color: #635cf4;
+    color: white;
+    height: 40px;
+    padding: 0 24px;
+    border-radius: 8px;
+    font-weight: bold;
+  }
+  
+  .add-new-user-modal .next-button:hover {
+    background-color: #4a44c7;
+    color: white;
+  }

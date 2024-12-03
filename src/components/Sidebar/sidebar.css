@@ -1,0 +1,54 @@
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background-color: #ffffff;
+  border-right: 1px solid #e0e0e0;
+  padding: 16px;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: -100%; /* Initially hidden for mobile */
+  height: 100vh;
+  overflow-y: auto;
+  transition: left 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.sidebar.open {
+  left: 0; /* Slide in when open */
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    left: 0;
+    position: static;
+    width: 250px;
+    height: auto;
+    border-right: 1px solid #e0e0e0;
+  }
+}
+
+/* Hamburger Button */
+.hamburger-button {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  background: #4b49ac;
+  color: #ffffff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 1100;
+  font-size: 20px;
+}
+
+.hamburger-button:hover {
+  background: #373285;
+}
+
+@media (min-width: 768px) {
+  .hamburger-button {
+    display: none;
+  }
+}

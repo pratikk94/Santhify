@@ -1,0 +1,24 @@
+/* FilterModal.css */
+.filter-modal .filter-section {
+    margin-bottom: 16px;
+  }
+  
+  .filter-modal .filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  .filter-modal .selected-countries {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .filter-modal .filter-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+  }

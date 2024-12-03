@@ -1,0 +1,18 @@
+/* global.css */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+  }
+  
+  .app-container {
+    display: flex;
+    flex-direction: column; /* Default for mobile screens */
+    min-height: 100vh;
+  }
+  
+  @media (min-width: 768px) {
+    .app-container {
+      flex-direction: row; /* Sidebar and content side-by-side for larger screens */
+    }
+  }

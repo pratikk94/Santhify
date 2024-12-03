@@ -1,0 +1,13 @@
+/* TopNav.css */
+.top-nav {
+    display: flex;
+    justify-content: flex-end;
+    padding: 16px;
+    background: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .top-nav-buttons .ant-btn {
+    border-radius: 50%;
+    color: #635cf4;
+  }
