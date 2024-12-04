@@ -1,0 +1,98 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #4b6cb7, #182848);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Login Container */
+  .login-container {
+    width: 100%;
+    max-width: 400px;
+    background: #fff;
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  
+  /* Heading */
+  .login-container h2 {
+    margin-bottom: 24px;
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  /* Inputs */
+  .login-container input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  
+  .login-container input:focus {
+    border-color: #4b6cb7;
+    outline: none;
+  }
+  
+  /* Button */
+  .login-container button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4b6cb7;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-container button:hover {
+    background-color: #182848;
+  }
+  
+  /* Forgot Password and Signup Links */
+  .login-container .login-links {
+    margin-top: 16px;
+    font-size: 14px;
+  }
+  
+  .login-container .login-links a {
+    color: #4b6cb7;
+    text-decoration: none;
+  }
+  
+  .login-container .login-links a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive */
+  @media (max-width: 480px) {
+    .login-container {
+      padding: 24px;
+    }
+  
+    .login-container h2 {
+      font-size: 20px;
+    }
+  
+    .login-container input {
+      font-size: 14px;
+    }
+  
+    .login-container button {
+      font-size: 14px;
+    }
+  }

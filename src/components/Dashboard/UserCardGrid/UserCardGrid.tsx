@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Row, Col, Pagination } from 'antd';
 import './UserCardsGrid.css';
 import UserCard from '../UserCard/UserCard';
-import mockUsers from '../../data/mockUsers';
+import mockUsers from '../../../data/mockUsers';
 import dayjs, { Dayjs } from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
 

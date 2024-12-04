@@ -1,21 +1,34 @@
 import React from 'react';
-import { Layout } from 'antd';
-import Sidebar from './components/Sidebar/Sidebar';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './pages/LoginPage';
+import ProtectedRoute from './authentication/ProtectedRoute';
 import Dashboard from './pages/Dashboard';
-import 'antd/dist/reset.css';
+import Client from './pages/Client';
 
-const { Content } = Layout;
 
 const App: React.FC = () => {
   return (
-    <Layout>
-      <Sidebar />
-      <Layout>
-        <Content style={{ margin: '24px', background: '#f4f4f4', padding: '24px', minHeight: '100vh' }}>
-          <Dashboard />
-        </Content>
-      </Layout>
-    </Layout>
+    <Router>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/client"
+          element={
+            <ProtectedRoute>
+              <Client />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </Router>
   );
 };
 

@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import '../styles/dashboard.css';
-import TopNav from '../components/TopNav/TopNav';
-import OverviewHeader from '../components/OverviewHeader/OverviewHeader';
-import StatsCards from '../components/StatsCard/StatsCard';
-import FiltersBar from '../components/FiltersBar/FiltersBar';
-import UserCardsGrid from '../components/UserCardGrid/UserCardGrid';
+import TopNav from '../components/Navigation/TopNav/TopNav';
+import OverviewHeader from '../components/Navigation/OverviewHeader/OverviewHeader';
+import StatsCards from '../components/Dashboard/StatsCard/StatsCard';
+
+import UserCardsGrid from '../components/Dashboard/UserCardGrid/UserCardGrid';
 import mockUsers from '../data/mockUsers'; // Importing mock users
 import dayjs, { Dayjs } from 'dayjs';
+import Sidebar from '../components/Navigation/Sidebar/Sidebar';
+import FiltersBar from '../components/Dashboard/FiltersBar/FiltersBar';
 
 interface FilterCriteria {
   countries: string[];
@@ -25,6 +27,9 @@ const Dashboard: React.FC = () => {
     date_added: null,
   });
 
+  // Using mock data directly
+  const [users] = useState(mockUsers);
+
   const handleSearch = (value: string) => {
     setSearchTerm(value);
   };
@@ -41,8 +46,8 @@ const Dashboard: React.FC = () => {
     alert('Add User functionality coming soon!');
   };
 
-  // Apply search, filters, and sort order to mock users
-  const filteredUsers = mockUsers
+  // Apply search, filters, and sort order to users
+  const filteredUsers = users
     // Search Filter
     .filter((user) =>
       user.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -81,6 +86,7 @@ const Dashboard: React.FC = () => {
     <div className="dashboard-layout">
       {/* Top Navigation */}
       <TopNav />
+      <Sidebar />
       <div className="dashboard-main">
         {/* Overview Section */}
         <OverviewHeader />

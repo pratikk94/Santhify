@@ -1,0 +1,105 @@
+/* Profile Tab Container */
+.profile-tab {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+    flex-direction: row;
+  }
+  
+  /* Report Section */
+  .report-section {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #fff;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  
+  .report-section h3 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 16px;
+  }
+  
+  .report-section .ant-btn-primary {
+    margin-top: 16px;
+  }
+  
+  .report-section .more-icon {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 18px;
+    color: #888;
+    cursor: pointer;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 1024px) {
+    .profile-tab {
+      gap: 12px; /* Reduce gap for medium screens */
+    }
+  
+    .report-section {
+      padding: 12px; /* Reduce padding for smaller screens */
+    }
+  
+    .report-section h3 {
+      font-size: 14px; /* Adjust font size for medium screens */
+      margin-bottom: 12px;
+    }
+  
+    .report-section .more-icon {
+      font-size: 16px; /* Adjust icon size */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .profile-tab {
+      flex-direction: column; /* Stack vertically for smaller screens */
+      gap: 16px;
+    }
+  
+    .report-section {
+      padding: 12px;
+    }
+  
+    .report-section h3 {
+      font-size: 14px;
+    }
+  
+    .report-section .ant-btn-primary {
+      font-size: 14px;
+      margin-top: 12px; /* Adjust spacing for smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .profile-tab {
+      gap: 8px; /* Reduce gap further for very small screens */
+    }
+  
+    .report-section {
+      padding: 8px; /* Minimize padding for compact layout */
+      border-radius: 6px; /* Slightly smaller border radius */
+    }
+  
+    .report-section h3 {
+      font-size: 12px; /* Smaller font size */
+      margin-bottom: 8px;
+    }
+  
+    .report-section .ant-btn-primary {
+      font-size: 12px;
+      margin-top: 8px;
+    }
+  
+    .report-section .more-icon {
+      font-size: 14px; /* Reduce icon size */
+    }
+  }
