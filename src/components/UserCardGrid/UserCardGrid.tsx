@@ -100,6 +100,7 @@ const UserCardsGrid: React.FC<UserCardsGridProps> = ({ searchTerm, filters, sort
             style={{
               marginTop: '16px',
               textAlign: 'center',
+              justifyContent:'center'
             }}
           />
         </>
