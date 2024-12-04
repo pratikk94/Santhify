@@ -30,12 +30,12 @@ const StatsCards: React.FC = () => {
           <Card bordered className="stat-card">
             <div className="stat-content">
               <div className="stat-section">
-                <Title level={4} className="stat-title">Total Assessments</Title>
+                <Title level={4} className="stat-title">Total <br/>Assessments</Title>
                 <Text className="stat-number">3</Text>
               </div>
               <div className="stat-divider"></div>
               <div className="stat-section">
-                <Title level={4} className="stat-title">Last 30 Days</Title>
+                <Title level={4} className="stat-title">Last 30 <br/>Days</Title>
                 <Text className="stat-small-number">32</Text>
               </div>
             </div>
