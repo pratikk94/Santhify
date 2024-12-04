@@ -58,6 +58,7 @@
 
   .stat-card {
     padding: 12px; /* Reduce padding for smaller screens */
+    height: 32vh;
   }
 
   .stat-number {
