@@ -3,42 +3,120 @@
   padding: 16px;
   background: #ffffff;
   display: flex;
-  flex-direction: column; /* Stack grid elements */
-  min-height: 160px; /* Ensure height is at least the size of one user card */
-  overflow: visible; /* Allow grid content to overflow if necessary */
-  justify-content: flex-start; /* Align content to the top */
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 16px; /* Space between rows */
+  min-height: 0;
+  overflow: auto; /* Allow scrolling for overflow content */
 }
 
-/* Row Styles */
+/* Ant Design Row Overrides */
 .user-cards-grid .ant-row {
-  flex-grow: 1; /* Allow the row to take available space */
-  overflow: visible; /* Allow row content to overflow */
-  gap: 16px; /* Add space between user cards */
-  margin: 0; /* Remove extra margins */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; /* Ensure consistent spacing between cards */
+  justify-content: center; /* Center align the grid items */
+  margin: 0; /* Avoid unexpected margins from Ant Design */
 }
 
-/* Column Styles */
+/* Ant Design Col Overrides */
 .user-cards-grid .ant-col {
-  margin-bottom: 16px; /* Add space between rows */
+  display: flex;
+  justify-content: center;
+  flex: 1 1 250px; /* Columns flex to occupy space without breaking layout */
+  max-width: 300px; /* Ensure cards don't grow too wide */
+  margin-bottom: 16px;
 }
 
-/* Responsive Design */
+/* Fix Icon Stacking Issue */
+.user-cards-grid .user-icons {
+  display: flex;
+  flex-direction: row; /* Stack icons vertically */
+  align-items: center;
+  gap: 8px; /* Add vertical spacing */
+  margin: 12px 0;
+}
+
+/* Individual Icon Styling */
+.user-cards-grid .user-icons .icon-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+/* Increased Icon Size */
+.user-cards-grid .user-icons .default-icon {
+  font-size: 32px; /* Slightly larger size for better visibility */
+  color: #635cf4;
+  width: 40px; /* Ensure uniform icon size */
+  height: 40px;
+}
+
+
+/* Overlay Tick or Cross */
+.user-cards-grid .user-icons .overlay-icon {
+  position: absolute;
+  top: -10px; /* Adjusted positioning */
+  right: -10px;
+  font-size: 16px; /* Increased for better visibility */
+  background: #ffffff;
+  border-radius: 50%;
+  border: 1px solid #e0e0e0;
+  padding: 2px;
+  color: inherit; /* Inherit color from context (success/error) */
+}
+
+/* Empty State Styling */
+.user-cards-grid .empty-state {
+  text-align: center;
+  color: #777;
+  font-size: 16px;
+  padding: 32px 0;
+}
+
+/* Responsive Adjustments */
 @media (max-width: 768px) {
   .user-cards-grid {
-    padding: 8px; /* Reduce padding for smaller devices */
+    padding: 12px;
   }
 
   .user-cards-grid .ant-row {
-    gap: 8px; /* Reduce spacing for smaller screens */
+    gap: 12px; /* Reduce spacing for medium screens */
+  }
+
+  .user-cards-grid .ant-col {
+    flex: 1 1 200px; /* Adjust column width for medium screens */
+  }
+
+  .user-icons .default-icon {
+    font-size: 28px; /* Adjust icon size for medium screens */
+    width: 36px;
+    height: 36px;
   }
 }
 
 @media (max-width: 480px) {
   .user-cards-grid {
-    padding: 4px; /* Further reduce padding for very small devices */
+    padding: 8px;
   }
 
   .user-cards-grid .ant-row {
-    gap: 4px; /* Minimize spacing for small screens */
+    gap: 8px; /* Reduce spacing for small screens */
+  }
+
+  .user-cards-grid .ant-col {
+    flex: 1 1 160px; /* Adjust column width for small screens */
+  }
+
+  .user-icons .default-icon {
+    font-size: 24px; /* Smaller icon size for small screens */
+    width: 32px;
+    height: 32px;
+  }
+
+  .user-icons .overlay-icon {
+    font-size: 14px; /* Adjust overlay size for small screens */
+    top: -8px;
+    right: -8px;
   }
 }

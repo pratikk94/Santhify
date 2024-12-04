@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { Row, Col, Pagination } from 'antd';
+import './UserCardsGrid.css';
+import UserCard from '../UserCard/UserCard';
+import mockUsers from '../../data/mockUsers';
 import dayjs, { Dayjs } from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
-
-import '../UserCardGrid/UserCardsGrid.css';
-import mockUsers from '../../data/mockUsers';
-import UserCard from '../UserCard/UserCard';
 
 // Extend dayjs with required plugins
 dayjs.extend(isBetween);
@@ -29,14 +28,16 @@ const UserCardsGrid: React.FC<UserCardsGridProps> = ({ searchTerm, filters, sort
 
   const filteredUsers = mockUsers
     // Search Filter
-    .filter((user) => user.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    .filter((user) =>
+      user.name.toLowerCase().includes(searchTerm.toLowerCase())
+    )
     // Country Filter
     .filter((user) =>
       filters.countries.length ? filters.countries.includes(user.country) : true
     )
     // Age Range Filter
     .filter((user) => {
-      if (!user.age) return true; // Skip if age is not available
+      if (!user.age) return true;
       return user.age >= filters.ageRange[0] && user.age <= filters.ageRange[1];
     })
     // Date Range Filter
@@ -56,10 +57,9 @@ const UserCardsGrid: React.FC<UserCardsGridProps> = ({ searchTerm, filters, sort
       return true;
     })
     // Sort Users
-    .sort((a, b) => {
-      if (sortOrder === 'asc') return a.name.localeCompare(b.name);
-      return b.name.localeCompare(a.name);
-    });
+    .sort((a, b) =>
+      sortOrder === 'asc' ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name)
+    );
 
   const paginatedUsers = filteredUsers.slice(
     (currentPage - 1) * pageSize,
@@ -72,33 +72,40 @@ const UserCardsGrid: React.FC<UserCardsGridProps> = ({ searchTerm, filters, sort
 
   return (
     <div className="user-cards-grid">
-      <Row gutter={[16, 16]} justify="center">
-        {paginatedUsers.map((user) => (
-          <Col
-            key={user.id}
-            xs={24} // Full width on extra small devices
-            sm={12} // Two cards per row on small devices
-            md={8}  // Three cards per row on medium devices
-            lg={6}  // Four cards per row on large devices
-            xl={6}
-            xxl={6}
-          >
-            <UserCard user={user} />
-          </Col>
-        ))}
-      </Row>
-      <Pagination
-        current={currentPage}
-        pageSize={pageSize}
-        total={filteredUsers.length}
-        onChange={handlePageChange}
-        style={{
-          marginTop: '16px',
-          textAlign: 'center',
-          display: 'flex',
-          justifyContent: 'center',
-        }}
-      />
+      {paginatedUsers.length > 0 ? (
+        <>
+          <Row gutter={[16, 16]} justify="center">
+            {paginatedUsers.map((user) => (
+              <Col
+                key={user.id}
+                xs={24}
+                sm={12}
+                md={8}
+                lg={6}
+                xl={6}
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                }}
+              >
+                <UserCard user={user} />
+              </Col>
+            ))}
+          </Row>
+          <Pagination
+            current={currentPage}
+            pageSize={pageSize}
+            total={filteredUsers.length}
+            onChange={handlePageChange}
+            style={{
+              marginTop: '16px',
+              textAlign: 'center',
+            }}
+          />
+        </>
+      ) : (
+        <div className="empty-state">No users match the current filters.</div>
+      )}
     </div>
   );
 };

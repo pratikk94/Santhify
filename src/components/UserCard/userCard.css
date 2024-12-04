@@ -1,76 +1,208 @@
+/* User Card Styles */
 .user-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 16px;
+  border: 1px solid #e0e0e0;
   border-radius: 8px;
+  padding: 16px;
+  background: #ffffff;
   text-align: center;
-  background: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.user-avatar {
-  margin-bottom: 12px;
+.user-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-.user-info {
-  margin-bottom: 16px;
+/* User Avatar */
+.user-avatar .ant-avatar {
+  margin-bottom: 8px;
 }
 
-.user-name {
+/* User Info */
+.user-info .user-name {
   font-size: 16px;
   font-weight: bold;
-  color: #333;
+  color: #333333;
 }
 
-.user-date {
-  font-size: 12px;
-  color: #777;
+.user-info .user-date {
+  font-size: 14px;
+  color: #777777;
+  margin-top: 4px;
 }
 
+/* User Status Icons */
 .user-icons {
   display: flex;
-  gap: 32px; /* Larger gap to center the icons properly */
-  margin-bottom: 16px;
-  justify-content: center;
-  width: 100%; /* Ensures icons are centered */
+  flex-wrap: wrap; /* Allow wrapping to the next line if necessary */
+  align-items: center;
+  justify-content: center; /* Center align icons */
+  gap: 16px; /* Space between icons */
+  margin: 12px 0;
 }
 
-.icon-container {
+.user-icons .icon-container {
   position: relative;
-  display: inline-block;
-  text-align: center;
+  display: inline-flex; /* Ensure proper alignment */
+  align-items: center;
+  justify-content: center;
 }
 
-.main-icon {
-  font-size: 36px; /* Larger icon size */
-  color: #635cf4;
+/* Increased Icon Size */
+.user-icons .icon-container .default-icon {
+  font-size: 30px;
+  width: 35px;
+  height: 35px;
+  color: #635cf4; /* Default purple color */
 }
 
-.icon-status {
+/* Overlay Icon */
+.user-icons .icon-container .overlay-icon {
   position: absolute;
-  top: -4px;
-  right: -8px;
+  top: -10px;
+  right: -10px;
   font-size: 14px;
-  background: white; /* Optional: Add a background for prominence */
+  background: #fff;
   border-radius: 50%;
+  padding: 2px;
+  border: 1px solid #e0e0e0;/* User Card Styles */
+  .user-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 16px;
+    background: #ffffff;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .user-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* User Avatar */
+  .user-avatar .ant-avatar {
+    margin-bottom: 8px;
+  }
+  
+  /* User Info */
+  .user-info .user-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333333;
+  }
+  
+  .user-info .user-date {
+    font-size: 14px;
+    color: #777777;
+    margin-top: 4px;
+  }
+  
+  /* User Status Icons */
+  .user-icons {
+    display: flex;
+    flex-wrap: nowrap; /* Prevent wrapping by default */
+    justify-content: center; /* Center align icons horizontally */
+    align-items: center; /* Align items vertically */
+    gap: 16px; /* Space between icons */
+    margin: 12px 0;
+  }
+  
+  /* Add wrapping for smaller screens */
+  @media (max-width: 480px) {
+    .user-icons {
+      flex-wrap: wrap; /* Allow wrapping on smaller screens */
+      gap: 12px; /* Adjust gap for smaller layouts */
+    }
+  }
+  
+  /* Icon Container */
+  .user-icons .icon-container {
+    position: relative;
+    display: inline-flex; /* Ensure proper alignment */
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Increased Icon Size */
+  .user-icons .icon-container .default-icon {
+    font-size: 35px; /* Larger size for better visibility */
+    width: 40px; /* Ensure consistent width */
+    height: 40px; /* Ensure consistent height */
+    color: #635cf4; /* Default purple color */
+  }
+  
+  /* Overlay Icon */
+  .user-icons .icon-container .overlay-icon {
+    position: absolute;
+    top: -10px; /* Adjust positioning */
+    right: -10px; /* Adjust positioning */
+    font-size: 16px; /* Adjusted for better clarity */
+    background: #fff;
+    border-radius: 50%;
+    padding: 2px;
+    border: 1px solid #e0e0e0;
+  }
+  
+  /* Tick and Cross Colors */
+  .success-icon {
+    color: #4caf50; /* Green for success */
+  }
+  
+  .error-icon {
+    color: #f44336; /* Red for error */
+  }
+  
+  /* Action Buttons */
+  .user-actions {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  .user-actions .profile-button,
+  .user-actions .contact-button {
+    border: 1px solid #635cf4;
+    color: #635cf4;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  
+  .user-actions .profile-button:hover,
+  .user-actions .contact-button:hover {
+    background-color: #635cf4;
+    color: #ffffff;
+  }
 }
 
+/* Tick and Cross Colors */
+.success-icon {
+  color: #4caf50;
+}
+
+.error-icon {
+  color: #f44336;
+}
+
+/* Action Buttons */
 .user-actions {
   display: flex;
-  gap: 8px;
   justify-content: center;
+  gap: 8px;
 }
 
-.profile-button,
-.contact-button {
-  background-color: #fff;
-  border: 1px solid #d9d9d9;
+.user-actions .profile-button,
+.user-actions .contact-button {
+  border: 1px solid #635cf4;
   color: #635cf4;
+  transition: background-color 0.2s, color 0.2s;
 }
 
-.profile-button:hover,
-.contact-button:hover {
+.user-actions .profile-button:hover,
+.user-actions .contact-button:hover {
   background-color: #635cf4;
-  color: #fff;
+  color: #ffffff;
 }
