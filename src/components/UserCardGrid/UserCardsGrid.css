@@ -6,8 +6,8 @@
   flex-direction: column;
   flex-grow: 1;
   gap: 16px; /* Space between rows */
-  min-height: 0;
-  overflow: auto; /* Allow scrolling for overflow content */
+  min-height: 80vh;
+  /* overflow: auto; Allow scrolling for overflow content */
 }
 
 /* Ant Design Row Overrides */
