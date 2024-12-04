@@ -7,6 +7,7 @@ import FiltersBar from '../components/FiltersBar/FiltersBar';
 import UserCardsGrid from '../components/UserCardGrid/UserCardGrid';
 import mockUsers from '../data/mockUsers'; // Importing mock users
 import dayjs, { Dayjs } from 'dayjs';
+import { Space } from 'antd';
 
 interface FilterCriteria {
   countries: string[];
@@ -82,6 +83,7 @@ const Dashboard: React.FC = () => {
       <TopNav />
       <div className="dashboard-main">
         <OverviewHeader />
+         
         <StatsCards />
         <FiltersBar
           onSearch={handleSearch}

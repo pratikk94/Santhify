@@ -7,7 +7,7 @@ const { Title, Text } = Typography;
 const StatsCards: React.FC = () => {
   return (
     <div className="stats-cards">
-      <Row gutter={[16, 16]} justify="space-between">
+      <Row gutter={[16, 16]} justify="center">
         {/* Total Clients */}
         <Col xs={24} sm={12} md={12} lg={8}>
           <Card bordered className="stat-card">

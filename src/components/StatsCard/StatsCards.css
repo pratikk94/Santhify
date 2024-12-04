@@ -1,4 +1,5 @@
 .stats-cards {
+  margin-top: 24px;
   margin-bottom: 24px; /* Space below the stats cards */
 }
 
@@ -12,7 +13,7 @@
 .stat-content {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between; /* Ensure content spreads evenly */
   gap: 16px;
 }
 
@@ -45,15 +46,24 @@
 /* Responsive Styles */
 @media (max-width: 768px) {
   .stat-content {
-    flex-direction: column;
-    gap: 8px; /* Reduce gap for smaller screens */
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Align items to the center */
+    gap: 12px; /* Reduce gap for smaller screens */
   }
 
   .stat-divider {
-    display: none; /* Remove divider on smaller screens */
+    display: none; /* Hide divider on smaller screens */
   }
 
-  .stat-section {
-    text-align: center; /* Ensure content is centered on small screens */
+  .stat-card {
+    padding: 12px; /* Reduce padding for smaller screens */
+  }
+
+  .stat-number {
+    font-size: 22px; /* Adjust font size for smaller screens */
+  }
+
+  .stat-small-number {
+    font-size: 16px; /* Adjust font size for smaller screens */
   }
 }
