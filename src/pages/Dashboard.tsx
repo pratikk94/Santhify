@@ -6,15 +6,23 @@ import StatsCards from '../components/StatsCard/StatsCard';
 import FiltersBar from '../components/FiltersBar/FiltersBar';
 import UserCardsGrid from '../components/UserCardGrid/UserCardGrid';
 import mockUsers from '../data/mockUsers'; // Importing mock users
+import dayjs, { Dayjs } from 'dayjs';
+
+interface FilterCriteria {
+  countries: string[];
+  ageRange: [number, number];
+  dateRange: [Dayjs | null, Dayjs | null];
+  date_added: Dayjs | null;
+}
 
 const Dashboard: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
-  const [filters, setFilters] = useState({
-    countries: [],
+  const [filters, setFilters] = useState<FilterCriteria>({
+    countries: [], // Explicitly typed as string[]
     ageRange: [14, 37],
     dateRange: [null, null],
-    dateAdded: null,
+    date_added: null,
   });
 
   const handleSearch = (value: string) => {
@@ -22,10 +30,10 @@ const Dashboard: React.FC = () => {
   };
 
   const handleSortBy = () => {
-    setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+    setSortOrder((prevOrder) => (prevOrder === 'asc' ? 'desc' : 'asc'));
   };
 
-  const handleFilterApply = (newFilters: any) => {
+  const handleFilterApply = (newFilters: FilterCriteria) => {
     setFilters(newFilters);
   };
 
@@ -35,10 +43,35 @@ const Dashboard: React.FC = () => {
 
   // Apply search, filters, and sort order to mock users
   const filteredUsers = mockUsers
-    // Filter by search term
+    // Search Filter
     .filter((user) =>
       user.name.toLowerCase().includes(searchTerm.toLowerCase())
     )
+    // Country Filter
+    .filter((user) =>
+      filters.countries.length ? filters.countries.includes(user.country) : true
+    )
+    // Age Range Filter
+    .filter((user) => {
+      if (!user.age) return true; // Skip if age is not available
+      return user.age >= filters.ageRange[0] && user.age <= filters.ageRange[1];
+    })
+    // Date Range Filter
+    .filter((user) => {
+      if (filters.dateRange[0] && filters.dateRange[1]) {
+        const userDate = dayjs(user.date_added, 'YYYY-MM-DD');
+        return userDate.isBetween(filters.dateRange[0], filters.dateRange[1], 'day', '[]');
+      }
+      return true;
+    })
+    // Date Added Filter
+    .filter((user) => {
+      if (filters.date_added) {
+        const userDate = dayjs(user.date_added, 'YYYY-MM-DD');
+        return userDate.isSame(filters.date_added, 'day');
+      }
+      return true;
+    })
     // Sort users by name
     .sort((a, b) =>
       sortOrder === 'asc' ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name)

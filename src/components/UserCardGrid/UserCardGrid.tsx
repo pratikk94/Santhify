@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
 import { Row, Col, Pagination } from 'antd';
+import dayjs, { Dayjs } from 'dayjs';
+import isBetween from 'dayjs/plugin/isBetween';
 
 import '../UserCardGrid/UserCardsGrid.css';
-import moment from 'moment';
 import mockUsers from '../../data/mockUsers';
 import UserCard from '../UserCard/UserCard';
+
+// Extend dayjs with required plugins
+dayjs.extend(isBetween);
 
 interface FilterCriteria {
   countries: string[];
   ageRange: [number, number];
-  dateRange: [moment.Moment | null, moment.Moment | null];
-  dateAdded: moment.Moment | null;
+  dateRange: [Dayjs | null, Dayjs | null];
+  date_added: Dayjs | null;
 }
 
 interface UserCardsGridProps {
@@ -38,16 +42,16 @@ const UserCardsGrid: React.FC<UserCardsGridProps> = ({ searchTerm, filters, sort
     // Date Range Filter
     .filter((user) => {
       if (filters.dateRange[0] && filters.dateRange[1]) {
-        const userDate = moment(user.dateAdded, 'DD/MM/YYYY');
-        return userDate.isBetween(filters.dateRange[0], filters.dateRange[1], undefined, '[]');
+        const userDate = dayjs(user.date_added, 'YYYY-MM-DD');
+        return userDate.isBetween(filters.dateRange[0], filters.dateRange[1], 'day', '[]');
       }
       return true;
     })
     // Date Added Filter
     .filter((user) => {
-      if (filters.dateAdded) {
-        const userDate = moment(user.dateAdded, 'DD/MM/YYYY');
-        return userDate.isSame(filters.dateAdded, 'day');
+      if (filters.date_added) {
+        const userDate = dayjs(user.date_added, 'YYYY-MM-DD');
+        return userDate.isSame(filters.date_added, 'day');
       }
       return true;
     })
@@ -70,14 +74,14 @@ const UserCardsGrid: React.FC<UserCardsGridProps> = ({ searchTerm, filters, sort
     <div className="user-cards-grid">
       <Row gutter={[16, 16]} justify="center">
         {paginatedUsers.map((user) => (
-          <Col 
-            key={user.id} 
-            xs={24} 
-            sm={12} 
-            md={8} 
-            lg={6} 
-            xl={6} 
-            xxl={6  } // Adjust columns for extra-large screens
+          <Col
+            key={user.id}
+            xs={24}
+            sm={12}
+            md={8}
+            lg={6}
+            xl={6}
+            xxl={6} // Adjust columns for extra-large screens
           >
             <UserCard user={user} />
           </Col>
@@ -88,9 +92,14 @@ const UserCardsGrid: React.FC<UserCardsGridProps> = ({ searchTerm, filters, sort
         pageSize={pageSize}
         total={filteredUsers.length}
         onChange={handlePageChange}
-        style={{ marginTop: '16px', textAlign: 'center', display: 'flex', justifyContent: 'center' }}
+        style={{
+          marginTop: '16px',
+          textAlign: 'center',
+          display: 'flex',
+          justifyContent: 'center',
+        }}
       />
-    </div>  
+    </div>
   );
 };
 

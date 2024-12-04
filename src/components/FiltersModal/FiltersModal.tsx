@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Modal, Input,  Slider, DatePicker, Button,  Tag } from 'antd';
+import { Modal, Input, Slider, DatePicker, Button, Tag } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import '../FiltersModal/FiltersModal.css';
+import  { Dayjs } from 'dayjs';
 
 const { RangePicker } = DatePicker;
 
@@ -14,8 +15,8 @@ interface FilterModalProps {
 const FilterModal: React.FC<FilterModalProps> = ({ visible, onClose, onApply }) => {
   const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
   const [ageRange, setAgeRange] = useState<[number, number]>([14, 37]);
-  const [dateRange, setDateRange] = useState<[moment.Moment | null, moment.Moment | null]>([null, null]);
-  const [dateAdded, setDateAdded] = useState<moment.Moment | null>(null);
+  const [dateRange, setDateRange] = useState<[Dayjs | null, Dayjs | null]>([null, null]);
+  const [dateAdded, setDateAdded] = useState<Dayjs | null>(null);
 
   const handleApply = () => {
     onApply({
@@ -103,7 +104,7 @@ const FilterModal: React.FC<FilterModalProps> = ({ visible, onClose, onApply }) 
         </div>
         <RangePicker
           value={dateRange}
-          onChange={(values) => setDateRange(values as [moment.Moment, moment.Moment])}
+          onChange={(values) => setDateRange(values as [Dayjs | null, Dayjs | null])}
         />
       </div>
 
