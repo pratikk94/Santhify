@@ -8,7 +8,6 @@ import UserCardsGrid from '../components/UserCardGrid/UserCardGrid';
 import mockUsers from '../data/mockUsers'; // Importing mock users
 import dayjs, { Dayjs } from 'dayjs';
 
-
 interface FilterCriteria {
   countries: string[];
   ageRange: [number, number];
@@ -20,7 +19,7 @@ const Dashboard: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
   const [filters, setFilters] = useState<FilterCriteria>({
-    countries: [], // Explicitly typed as string[]
+    countries: [],
     ageRange: [14, 37],
     dateRange: [null, null],
     date_added: null,
@@ -80,11 +79,16 @@ const Dashboard: React.FC = () => {
 
   return (
     <div className="dashboard-layout">
+      {/* Top Navigation */}
       <TopNav />
       <div className="dashboard-main">
+        {/* Overview Section */}
         <OverviewHeader />
-         
+        
+        {/* Stats Section */}
         <StatsCards />
+        
+        {/* Filters Section */}
         <FiltersBar
           onSearch={handleSearch}
           onSortBy={handleSortBy}
@@ -92,6 +96,8 @@ const Dashboard: React.FC = () => {
           onAddUser={handleAddUser}
           totalUsers={filteredUsers.length} // Pass filtered users count
         />
+        
+        {/* User Grid Section */}
         <UserCardsGrid
           searchTerm={searchTerm}
           filters={filters}

@@ -76,12 +76,12 @@ const UserCardsGrid: React.FC<UserCardsGridProps> = ({ searchTerm, filters, sort
         {paginatedUsers.map((user) => (
           <Col
             key={user.id}
-            xs={24}
-            sm={12}
-            md={8}
-            lg={6}
+            xs={24} // Full width on extra small devices
+            sm={12} // Two cards per row on small devices
+            md={8}  // Three cards per row on medium devices
+            lg={6}  // Four cards per row on large devices
             xl={6}
-            xxl={6} // Adjust columns for extra-large screens
+            xxl={6}
           >
             <UserCard user={user} />
           </Col>

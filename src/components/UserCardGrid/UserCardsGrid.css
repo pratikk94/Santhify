@@ -1,5 +1,44 @@
-/* UserCardsGrid.css */
+/* UserCardsGrid Styles */
 .user-cards-grid {
   padding: 16px;
   background: #ffffff;
+  display: flex;
+  flex-direction: column; /* Stack grid elements */
+  min-height: 160px; /* Ensure height is at least the size of one user card */
+  overflow: visible; /* Allow grid content to overflow if necessary */
+  justify-content: flex-start; /* Align content to the top */
+}
+
+/* Row Styles */
+.user-cards-grid .ant-row {
+  flex-grow: 1; /* Allow the row to take available space */
+  overflow: visible; /* Allow row content to overflow */
+  gap: 16px; /* Add space between user cards */
+  margin: 0; /* Remove extra margins */
+}
+
+/* Column Styles */
+.user-cards-grid .ant-col {
+  margin-bottom: 16px; /* Add space between rows */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .user-cards-grid {
+    padding: 8px; /* Reduce padding for smaller devices */
+  }
+
+  .user-cards-grid .ant-row {
+    gap: 8px; /* Reduce spacing for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .user-cards-grid {
+    padding: 4px; /* Further reduce padding for very small devices */
+  }
+
+  .user-cards-grid .ant-row {
+    gap: 4px; /* Minimize spacing for small screens */
+  }
 }
