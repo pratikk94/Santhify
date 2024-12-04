@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../styles/Dashboard.css';
+import '../styles/dashboard.css';
 import TopNav from '../components/TopNav/TopNav';
 import OverviewHeader from '../components/OverviewHeader/OverviewHeader';
 import StatsCards from '../components/StatsCard/StatsCard';
