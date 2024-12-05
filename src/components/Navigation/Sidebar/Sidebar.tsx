@@ -13,9 +13,8 @@ import { useNavigate } from 'react-router-dom';
 import '../Sidebar/sidebar.css';
 
 const { Sider } = Layout;
-
 interface SidebarProps {
-  onCollapse: (collapsed: boolean) => void; // Callback to notify parent of collapse state
+  onCollapse?: (collapsed: boolean) => void; // Optional callback
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ onCollapse }) => {
@@ -39,7 +38,9 @@ const Sidebar: React.FC<SidebarProps> = ({ onCollapse }) => {
   const toggleCollapsed = () => {
     const newCollapsed = !collapsed;
     setCollapsed(newCollapsed);
-    onCollapse(newCollapsed); // Notify parent
+    if (onCollapse) {
+      onCollapse(newCollapsed); // Notify parent only if onCollapse is defined
+    }
   };
 
   const menuItems = [
