@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Avatar, Space, Tooltip } from 'antd';
+import { Button,  Space, Tooltip } from 'antd';
 import {
   MailOutlined,
   FileOutlined,

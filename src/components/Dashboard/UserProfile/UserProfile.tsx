@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
 import './UserProfile.css';
-import { Tabs, List, Button, Avatar } from 'antd';
-import {
-  FileImageOutlined,
-  FilePdfOutlined,
-  FileTextOutlined,
-  VideoCameraOutlined,
-  AudioOutlined,
-} from '@ant-design/icons';
+import { Tabs, Avatar } from 'antd';
 import Sidebar from '../../Navigation/Sidebar/Sidebar';
 import TopNav from '../../../components/Dashboard/UserProfile/TopNav/TopNav';
 import Profile from '../../Client/BasicInfo/Profile/Profile';
@@ -42,20 +35,6 @@ const UserProfile: React.FC<UserProfileProps> = ({ userId }) => {
     ],
   };
 
-  const renderFileIcon = (type: string) => {
-    switch (type) {
-      case 'image':
-        return <FileImageOutlined />;
-      case 'pdf':
-        return <FilePdfOutlined />;
-      case 'video':
-        return <VideoCameraOutlined />;
-      case 'audio':
-        return <AudioOutlined />;
-      default:
-        return <FileTextOutlined />;
-    }
-  };
 
   return (
     <div className="dashboard-layout">

@@ -51,14 +51,14 @@ const ClientUploads: React.FC = () => {
       title: 'Date Added',
       dataIndex: 'dateAdded',
       key: 'dateAdded',
-      align: 'center',
+      align: 'center' as const, // Correctly typing align to 'center'
       render: (text: string) => <span className="upload-date">{text}</span>,
     },
     {
       title: '',
       key: 'actions',
-      align: 'right',
-      render: (_: any, record: UploadItem) => (
+      align: 'right' as const, // Correctly typing align to 'right'
+      render: () => (
         <Dropdown
           overlay={
             <Menu>

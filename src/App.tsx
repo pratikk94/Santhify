@@ -30,7 +30,7 @@ const App: React.FC = () => {
               path="/profile/:userId"
               element={
                 <ProtectedRoute>
-                  <UserProfile />
+                  <UserProfile userId='some-user-id' />
                 </ProtectedRoute>
               }
             />
