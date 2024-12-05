@@ -1,0 +1,35 @@
+.add-group-modal .ant-modal-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333333;
+  }
+  
+  .search-input {
+    margin-bottom: 16px;
+    border-radius: 8px;
+  }
+  
+  .ant-list-item {
+    padding: 8px 0;
+  }
+  
+  .ant-checkbox-wrapper {
+    font-size: 16px;
+    color: #333333;
+  }
+  
+  .ant-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+  
+  button.ant-btn-primary {
+    background-color: #635cf4;
+    border-color: #635cf4;
+  }
+  
+  button.ant-btn-primary:hover {
+    background-color: #5148c6;
+    border-color: #5148c6;
+  }

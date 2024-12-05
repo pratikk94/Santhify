@@ -7,7 +7,8 @@ import Profile from '../../Client/BasicInfo/Profile/Profile';
 import ClientUploads from './ClientUploads/ClientUploads';
 import Payment from './Payment/Payment';
 import Learning from '../../Client/Learning/Learning';
-
+import AssignClientModal from '../Modal/AddClientModal/AddClientModal';
+import AddGroupModal from '../Modal/AddGroupModal/AddGroupModal';
 
 const { TabPane } = Tabs;
 
@@ -16,7 +17,9 @@ interface UserProfileProps {
 }
 
 const UserProfile: React.FC<UserProfileProps> = ({ userId }) => {
-  const [collapsed, setCollapsed] = useState<boolean>(false);
+  const [collapsed, setCollapsed] = useState(false);
+  const [isGroupModalVisible, setIsGroupModalVisible] = useState(false);
+  const [isAssignClientModalVisible, setIsAssignClientModalVisible] = useState(false);
 
   const user = {
     id: userId,
@@ -35,12 +38,20 @@ const UserProfile: React.FC<UserProfileProps> = ({ userId }) => {
     ],
   };
 
-
   return (
     <div className="dashboard-layout">
+      {/* Sidebar */}
       <Sidebar onCollapse={(isCollapsed) => setCollapsed(isCollapsed)} />
+
+      {/* Main Content */}
       <div className={`dashboard-main ${collapsed ? 'collapsed-sidebar' : ''}`}>
-        <TopNav />
+        {/* Top Navigation */}
+        <TopNav
+          onGroupsClick={() => setIsGroupModalVisible(true)}
+          onAddUserClick={() => setIsAssignClientModalVisible(true)}
+        />
+
+        {/* User Profile Header */}
         <div className="user-profile-container">
           <div className="user-header">
             <Avatar size={64} style={{ backgroundColor: '#635CF4', color: '#fff' }}>
@@ -53,22 +64,41 @@ const UserProfile: React.FC<UserProfileProps> = ({ userId }) => {
               </p>
             </div>
           </div>
+
+          {/* Tabs Section */}
           <Tabs defaultActiveKey="1" className="user-tabs">
             <TabPane tab="Profile" key="1">
-              <Profile/>
+              <Profile />
             </TabPane>
             <TabPane tab="Learning" key="2">
-              <Learning/>
+              <Learning />
             </TabPane>
             <TabPane tab="Client Uploads" key="3">
-              <ClientUploads/>
+              <ClientUploads />
             </TabPane>
             <TabPane tab="Payments" key="4">
-              <Payment/>
+              <Payment />
             </TabPane>
           </Tabs>
         </div>
       </div>
+
+      {/* Add Group Modal */}
+      <AddGroupModal
+        isVisible={isGroupModalVisible}
+        onClose={() => setIsGroupModalVisible(false)}
+        userName={user.name}
+      />
+
+      {/* Assign Client Modal */}
+      <AssignClientModal
+        visible={isAssignClientModalVisible}
+        onCancel={() => setIsAssignClientModalVisible(false)}
+        onSave={(selectedUsers) => {
+          console.log('Selected Users:', selectedUsers);
+          setIsAssignClientModalVisible(false);
+        }}
+      />
     </div>
   );
 };

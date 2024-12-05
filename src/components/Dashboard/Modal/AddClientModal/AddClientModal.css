@@ -1,0 +1,30 @@
+/* Modal-specific styles */
+.ant-modal-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333333;
+  }
+  
+  .ant-input {
+    border-radius: 8px;
+  }
+  
+  .ant-checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .ant-checkbox-wrapper div {
+    display: flex;
+    align-items: center;
+  }
+  
+  .ant-checkbox-wrapper span {
+    font-size: 16px;
+  }
+  
+  .ant-modal-footer {
+    display: flex;
+    justify-content: space-between;
+  }

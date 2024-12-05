@@ -50,12 +50,12 @@ const Dashboard: React.FC = () => {
         <OverviewHeader />
         <StatsCards />
         <FiltersBar
-  onSearch={handleSearch}
-  onSortBy={handleSortBy}
-  onFilterApply={handleFilterApply}
-  onAddUser={handleAddUser} // Added this prop
-  totalUsers={filteredUsers.length}
-/>
+          onSearch={handleSearch}
+          onSortBy={handleSortBy}
+          onFilterApply={handleFilterApply}
+          onAddUser={handleAddUser} // Added this prop
+          totalUsers={filteredUsers.length}
+        />
         <UserCardsGrid searchTerm={searchTerm} filters={filters} sortOrder={sortOrder} />
       </div>
     </div>
