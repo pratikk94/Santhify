@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Input, Button, Space, Typography } from 'antd';
 import { SearchOutlined, SortAscendingOutlined, FilterOutlined, PlusOutlined } from '@ant-design/icons';
-import FilterModal from '../FiltersModal/FiltersModal';
-
 import '../FiltersBar/FiltersBar.css';
+import FilterModal from '../FiltersModal/FiltersModal';
 import AddNewUserModal from '../AddNewUser/AddNewUserModal';
 
 const { Text } = Typography;

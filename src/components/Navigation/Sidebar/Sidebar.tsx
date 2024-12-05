@@ -15,7 +15,7 @@ import './sidebar.css';
 const { Sider } = Layout;
 
 interface SidebarProps {
-  onCollapse: (collapsed: boolean) => void; // Callback to inform parent about collapsed state
+  onCollapse?: (collapsed: boolean) => void; // Optional callback
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ onCollapse }) => {
@@ -23,7 +23,9 @@ const Sidebar: React.FC<SidebarProps> = ({ onCollapse }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    onCollapse(collapsed); // Notify parent component of the collapsed state
+    if (onCollapse) {
+      onCollapse(collapsed); // Call onCollapse only if it exists
+    }
   }, [collapsed, onCollapse]);
 
   const toggleCollapsed = () => {
@@ -51,15 +53,12 @@ const Sidebar: React.FC<SidebarProps> = ({ onCollapse }) => {
           left: 16,
           zIndex: 1000,
         }}
-        aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
-        aria-expanded={!collapsed}
       />
 
       <Sider
         collapsible
         collapsed={collapsed}
         onCollapse={(isCollapsed) => setCollapsed(isCollapsed)}
-        trigger={null} // Hides the default trigger
         width={250}
         collapsedWidth={80}
         style={{
