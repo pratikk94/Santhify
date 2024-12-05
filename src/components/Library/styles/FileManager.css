@@ -1,0 +1,69 @@
+/* General Layout */
+.file-manager {
+    padding: 16px;
+    background: #ffffff;
+    border-radius: 8px;
+    margin: 16px;
+}
+
+/* Header */
+.file-manager-header {
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.file-manager-header h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333;
+}
+
+.file-manager-header p {
+    color: #777777;
+    font-size: 14px;
+}
+
+/* Sections */
+.file-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 24px; /* Added more spacing for sections */
+}
+
+/* Folder and File Grid */
+.folder-grid,
+.file-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Fixed overlapping */
+    gap: 16px;
+    justify-items: start;
+    align-items: start;
+    margin-top: 8px;
+}
+
+/* Empty State */
+.empty-message {
+    text-align: center;
+    color: #888888;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .folder-grid,
+    .file-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .folder-grid,
+    .file-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 8px;
+    }
+}

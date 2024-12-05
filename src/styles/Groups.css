@@ -1,0 +1,25 @@
+.groups-page {
+    padding: 16px;
+    background: #f9f9f9;
+    min-height: 100vh;
+  }
+  
+  .groups-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .groups-header h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .group-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }

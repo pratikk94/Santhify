@@ -1,54 +1,103 @@
-/* Sidebar */
-.sidebar {
-  width: 250px;
-  background-color: #ffffff;
-  border-right: 1px solid #e0e0e0;
-  padding: 16px;
-  box-sizing: border-box;
-  position: fixed;
-  top: 0;
-  left: -100%; /* Initially hidden for mobile */
-  height: 100vh;
-  overflow-y: auto;
-  transition: left 0.3s ease-in-out;
-  z-index: 1000;
-}
-
-.sidebar.open {
-  left: 0; /* Slide in when open */
-}
-
-@media (min-width: 768px) {
-  .sidebar {
-    left: 0;
-    position: static;
-    width: 250px;
-    height: auto;
-    border-right: 1px solid #e0e0e0;
-  }
+/* Sidebar Styles */
+.logo {
+  height: 64px;
+  margin: 16px;
+  background: #4b49ac;
+  border-radius: 8px;
+  color: #fff;
+  text-align: center;
+  line-height: 64px;
+  font-weight: bold;
+  font-size: 18px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Add subtle shadow for logo */
 }
 
 /* Hamburger Button */
 .hamburger-button {
-  position: fixed;
-  top: 16px;
-  left: 16px;
   background: #4b49ac;
-  color: #ffffff;
   border: none;
-  padding: 8px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-  z-index: 1100;
-  font-size: 20px;
+  color: #fff;
+  font-size: 18px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  border-radius: 50%; /* Circular button */
+  width: 48px;
+  height: 48px;
 }
 
 .hamburger-button:hover {
-  background: #373285;
+  background: #3a398e;
+  color: #fff;
 }
 
-@media (min-width: 768px) {
+/* Collapsed Menu */
+.ant-menu-inline-collapsed > .ant-menu-item {
+  padding: 0 !important;
+  justify-content: center; /* Center icons when collapsed */
+}
+
+/* Menu Styles */
+.ant-menu {
+  border-right: none !important;
+  background: #ffffff; /* Set menu background */
+}
+
+.ant-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  padding: 10px 16px;
+  border-radius: 4px; /* Rounded corners */
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.ant-menu-item:hover {
+  background: #f4f4f4;
+  color: #4b49ac;
+}
+
+.ant-menu-item-selected {
+  font-weight: bold;
+  background: #e6e6e6;
+  color: #4b49ac;
+}
+
+/* Subtle icon color changes */
+.ant-menu-item .anticon {
+  font-size: 18px;
+  color: #4b49ac;
+}
+
+.ant-menu-item-selected .anticon {
+  font-size: 18px;
+  color: #3a398e; /* Darker icon color for selected item */
+}
+
+/* Responsive Sidebar */
+@media (max-width: 768px) {
   .hamburger-button {
-    display: none;
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 1000;
+    display: block;
   }
+
+  .ant-menu {
+    width: 100%;
+    position: relative;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for full-width menu */
+  }
+
+  .logo {
+    text-align: left;
+    padding-left: 16px;
+    line-height: 64px;
+    font-size: 16px;
+  }
+}
+
+/* Transition effects for menu */
+.ant-menu:not(.ant-menu-inline-collapsed) .ant-menu-item {
+  transition: all 0.3s ease;
 }
