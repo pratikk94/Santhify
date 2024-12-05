@@ -10,18 +10,13 @@ import Groups from './pages/Groups';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 
-
 const App: React.FC = () => {
   return (
     <Router>
-      <div style={{ display: 'flex', minHeight: '100vh' }}>
-        
-        <div style={{ flex: 1, width:'100vw'}}>
+      <div style={{ display: 'flex', minHeight: '100vh',width:"100vw" }}>
+        <div style={{ flex: 1 }}>
           <Routes>
-            {/* Public Login Route */}
             <Route path="/" element={<Login />} />
-
-            {/* Protected Routes */}
             <Route
               path="/dashboard"
               element={
@@ -51,8 +46,8 @@ const App: React.FC = () => {
               element={
                 <ProtectedRoute>
                   <DndProvider backend={HTML5Backend}>
-      <FileManager />
-    </DndProvider>
+                    <FileManager />
+                  </DndProvider>
                 </ProtectedRoute>
               }
             />

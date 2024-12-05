@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col, Card, Typography } from 'antd';
-import '../StatsCard/StatsCards.css';
+import './StatsCards.css';
 
 const { Title, Text } = Typography;
 
@@ -13,12 +13,11 @@ const StatsCards: React.FC = () => {
           <Card bordered className="stat-card">
             <div className="stat-content">
               <div className="stat-section">
-                <Title level={4} className="stat-title">Total <br/>Clients</Title>
+                <Title level={4} className="stat-title">Total Clients</Title>
                 <Text className="stat-number">453</Text>
               </div>
-              <div className="stat-divider"></div>
               <div className="stat-section">
-                <Title level={4} className="stat-title">Last 30 <br/>Days</Title>
+                <Title level={4} className="stat-title">Last 30 Days</Title>
                 <Text className="stat-small-number">32</Text>
               </div>
             </div>
@@ -30,12 +29,11 @@ const StatsCards: React.FC = () => {
           <Card bordered className="stat-card">
             <div className="stat-content">
               <div className="stat-section">
-                <Title level={4} className="stat-title">Total <br/>Assessments</Title>
+                <Title level={4} className="stat-title">Total Assessments</Title>
                 <Text className="stat-number">3</Text>
               </div>
-              <div className="stat-divider"></div>
               <div className="stat-section">
-                <Title level={4} className="stat-title">Last 30 <br/>Days</Title>
+                <Title level={4} className="stat-title">Last 30 Days</Title>
                 <Text className="stat-small-number">32</Text>
               </div>
             </div>

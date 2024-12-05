@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Row, Col, Pagination } from 'antd';
+import { Pagination } from 'antd';
 import './UserCardsGrid.css';
 import UserCard from '../UserCard/UserCard';
 import mockUsers from '../../../data/mockUsers';
@@ -74,34 +74,19 @@ const UserCardsGrid: React.FC<UserCardsGridProps> = ({ searchTerm, filters, sort
     <div className="user-cards-grid">
       {paginatedUsers.length > 0 ? (
         <>
-          <Row gutter={[16, 16]} justify="center">
+          <div className="user-grid">
             {paginatedUsers.map((user) => (
-              <Col
-                key={user.id}
-                xs={24}
-                sm={12}
-                md={8}
-                lg={6}
-                xl={6}
-                style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                }}
-              >
+              <div key={user.id} className="user-card-wrapper">
                 <UserCard user={user} />
-              </Col>
+              </div>
             ))}
-          </Row>
+          </div>
           <Pagination
             current={currentPage}
             pageSize={pageSize}
             total={filteredUsers.length}
             onChange={handlePageChange}
-            style={{
-              marginTop: '16px',
-              textAlign: 'center',
-              justifyContent:'center'
-            }}
+            className="pagination"
           />
         </>
       ) : (

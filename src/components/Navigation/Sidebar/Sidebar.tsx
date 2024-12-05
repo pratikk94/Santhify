@@ -10,27 +10,21 @@ import {
   SettingOutlined,
 } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
-import '../Sidebar/sidebar.css';
+import './sidebar.css';
 
 const { Sider } = Layout;
 
-const Sidebar: React.FC = () => {
+interface SidebarProps {
+  onCollapse: (collapsed: boolean) => void; // Callback to inform parent about collapsed state
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ onCollapse }) => {
   const [collapsed, setCollapsed] = useState<boolean>(true);
   const navigate = useNavigate();
 
-  // Adjust sidebar based on screen size
   useEffect(() => {
-    const handleResize = () => {
-      setCollapsed(window.innerWidth < 768);
-    };
-
-    handleResize(); // Set initial state
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+    onCollapse(collapsed); // Notify parent component of the collapsed state
+  }, [collapsed, onCollapse]);
 
   const toggleCollapsed = () => {
     setCollapsed((prev) => !prev);
@@ -46,7 +40,6 @@ const Sidebar: React.FC = () => {
 
   return (
     <>
-      {/* Hamburger Button for small screens */}
       <Button
         className="hamburger-button"
         type="primary"
@@ -57,7 +50,6 @@ const Sidebar: React.FC = () => {
           top: 16,
           left: 16,
           zIndex: 1000,
-          display: 'block',
         }}
         aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
         aria-expanded={!collapsed}
@@ -66,24 +58,24 @@ const Sidebar: React.FC = () => {
       <Sider
         collapsible
         collapsed={collapsed}
-        onCollapse={(collapsed) => setCollapsed(collapsed)}
+        onCollapse={(isCollapsed) => setCollapsed(isCollapsed)}
+        trigger={null} // Hides the default trigger
         width={250}
-        collapsedWidth={0} // Fully collapse on smaller screens
+        collapsedWidth={80}
         style={{
           height: '100vh',
           background: '#ffffff',
           position: 'fixed',
           zIndex: 999,
           borderRight: '1px solid #e0e0e0',
+          transition: 'all 0.3s ease',
         }}
       >
-        <div className="logo" style={{ height: 64, lineHeight: '64px', textAlign: 'center', background: '#4b49ac', color: '#fff', fontWeight: 'bold', borderRadius: 8, margin: 16 }}>
-          Logo
-        </div>
+        <div className="logo">Logo</div>
         <Menu
           theme="light"
-          defaultSelectedKeys={['clients']}
           mode="inline"
+          defaultSelectedKeys={['clients']}
           onClick={({ key }) => {
             const path = menuItems.find((item) => item.key === key)?.path || '/';
             navigate(path);

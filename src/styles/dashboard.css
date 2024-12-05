@@ -1,164 +1,116 @@
 /* Dashboard Layout */
 .dashboard-layout {
-    display: flex;
-    flex-direction: column; /* Stacks sidebar and content for smaller screens */
-    height: 100vh; /* Full viewport height */
-    background: #f4f4f4;
-  }
-  
-  /* Sidebar */
+  display: flex;
+  flex-direction: row; /* Arrange sidebar and main content side-by-side */
+  height: 100vh; /* Full viewport height */
+  background: #f4f4f4; /* Light background */
+}
+
+/* Sidebar */
+.dashboard-layout .sidebar {
+  flex-shrink: 0; /* Prevent sidebar from shrinking */
+  width: 250px; /* Fixed width for sidebar */
+  background: #ffffff;
+  border-right: 1px solid #e0e0e0;
+  position: fixed; /* Sidebar is fixed */
+  top: 0;
+  bottom: 0;
+  z-index: 10; /* Ensure sidebar is on top */
+  overflow-y: auto; /* Scroll for overflowing sidebar content */
+  transition: width 0.3s ease; /* Smooth transition for expanding/collapsing */
+}
+
+.dashboard-layout .sidebar.collapsed {
+  width: 80px; /* Narrower sidebar for smaller screens */
+}
+
+@media (max-width: 768px) {
   .dashboard-layout .sidebar {
-    flex-shrink: 0;
-    width: 250px;
-    background: #ffffff;
-    border-right: 1px solid #e0e0e0;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
-    overflow-y: auto; /* Allow scrolling if sidebar content exceeds height */
+    width: 80px; /* Narrower sidebar for smaller screens */
   }
-  
-  @media (max-width: 768px) {
-    .dashboard-layout .sidebar {
-      width: 100%; /* Full width for mobile */
-      position: static; /* Stack below header for small screens */
-    }
-  }
-  
-  /* Main Content */
+}
+
+/* Main Content */
+.dashboard-main {
+  flex: 1; /* Main content grows to fill available space */
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Allow scrolling for content overflow */
+  padding: 16px; /* Add padding for spacing */
+  background: #f9f9f9; /* Subtle background for the main area */
+  margin-left: 250px; /* Align main content with sidebar */
+  transition: margin-left 0.3s ease; /* Smooth transition for collapsed sidebar */
+}
+
+.dashboard-main.collapsed-sidebar {
+  margin-left: 80px; /* Adjust margin when sidebar is collapsed */
+}
+
+@media (max-width: 768px) {
   .dashboard-main {
-    flex: 1; /* Allow main content to grow and fill available space */
-    display: flex;
-    flex-direction: column;
-    margin-left: 250px;
-    overflow-y: auto; /* Allow dashboard content to scroll if it overflows */
+    margin-left: 80px; /* Adjust for collapsed sidebar */
+    padding: 12px; /* Reduce padding for smaller screens */
   }
-  
-  @media (max-width: 768px) {
-    .dashboard-main {
-      margin-left: 0; /* Remove left margin for mobile */
-    }
-  }
-  
-  /* Top Navigation */
-  .dashboard-main .top-nav {
-    flex-shrink: 0;
-    background: #f8f9fa;
-    border-bottom: 1px solid #e0e0e0;
-  }
-  
-  /* Scrollable Content */
-  .dashboard-content {
-    flex: 1; /* Allow content to grow and take available space */
-    overflow-y: auto; /* Enable scrolling for overflowing content */
-    padding: 16px;
-    background: #ffffff;
-    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
-    display: flex; /* Ensure proper stacking for child elements */
-    flex-direction: column;
-    min-height: 0; /* Prevent height issues */
-  }
-  
-  /* Stats Section */
-  .stats {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    justify-content: center;
-    margin-bottom: 24px;
-  }
-  
-  .stat {
-    background: #ffffff;
-    padding: 16px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    flex: 1;
-    min-width: 120px;
-    text-align: center;
-  }
-  
-  /* User Cards Grid */
-  .user-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    justify-content: center;
-    min-height: 160px; /* Ensure the user grid is at least as tall as one user card */
-  }
-  
-  @media (max-width: 768px) {
-    .user-list {
-      justify-content: center; /* Center user cards on smaller screens */
-      padding: 8px; /* Add padding for mobile devices */
-    }
-  }
-  
-  /* Responsive Header and Stats Adjustments */
-  @media (min-width: 768px) {
-    .dashboard-header h2,
-    .dashboard-header p {
-      text-align: left; /* Left-align text for larger screens */
-    }
-  
-    .stats {
-      justify-content: flex-start; /* Align stats to the left for larger screens */
-    }
-  
-    .user-list {
-      justify-content: flex-start; /* Align user cards to the left for larger screens */
-    }
-  }
-  
-  /* Ensure Dashboard Content is Responsive */
-  .dashboard-content {
-    display: flex;
-    flex-direction: column;
-    min-height: 0; /* Prevent height issues */
-  }
-  
-  /* UserCardsGrid Section */
-  .user-cards-grid {
-    padding: 16px;
-    background: #ffffff;
-    display: flex;
-    flex-direction: column; /* Stack grid elements */
-    flex-grow: 1; /* Allow grid to grow and fill available space */
-    min-height: 160px; /* Ensure height is at least the size of one user card */
-    overflow: visible; /* Allow grid content to overflow if necessary */
-  }
-  
-  /* Ensure Row and Columns fit dynamically */
-  .user-cards-grid .ant-row {
-    flex-grow: 1; /* Allow the row to take available space */
-    overflow-y: auto; /* Add vertical scrolling for overflow */
-    gap: 16px; /* Add spacing between user cards */
-    margin: 0; /* Remove extra margins */
-  }
-  
-  .user-cards-grid .ant-col {
-    margin-bottom: 16px; /* Add space between rows */
-  }
-  
-  /* Responsive Adjustments */
-  @media (max-width: 768px) {
-    .user-cards-grid {
-      padding: 8px; /* Reduce padding for smaller devices */
-    }
-  
-    .user-cards-grid .ant-row {
-      gap: 8px; /* Reduce spacing between rows for smaller screens */
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .user-cards-grid {
-      padding: 4px; /* Further reduce padding for very small devices */
-    }
-  
-    .user-cards-grid .ant-row {
-      gap: 4px; /* Minimize spacing for small screens */
-    }
-  }
+}
+
+/* Top Navigation */
+.dashboard-main .top-nav {
+  flex-shrink: 0;
+  background: #f8f9fa; /* Light top navigation background */
+  border-bottom: 1px solid #e0e0e0;
+  padding: 8px 16px; /* Consistent padding for navigation */
+}
+
+/* Scrollable Content */
+.dashboard-content {
+  flex: 1; /* Content grows to fill available space */
+  overflow-y: auto; /* Enable scrolling for overflowing content */
+  padding: 16px;
+  background: #ffffff; /* White background for content */
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow for separation */
+  display: flex;
+  flex-direction: column;
+  min-height: 0; /* Prevent height issues in flex containers */
+}
+
+/* Stats Section */
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; /* Add space between stat cards */
+  justify-content: center; /* Center align stats */
+  margin-bottom: 24px;
+}
+
+.stat {
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  min-width: 120px;
+  text-align: center;
+}
+
+/* Buttons and Controls */
+button {
+  cursor: pointer;
+  padding: 8px 16px;
+  background-color: #635cf4;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #5148c6; /* Darker shade for hover effect */
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  color: #777;
+  font-size: 16px;
+  padding: 32px 0;
+}
