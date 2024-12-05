@@ -17,7 +17,7 @@ interface FilterCriteria {
 }
 
 const Dashboard: React.FC = () => {
-  const [collapsed, setCollapsed] = useState<boolean>(true); // Track sidebar state
+  const [collapsed, setCollapsed] = useState<boolean>(false); // Track sidebar state
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
   const [filters, setFilters] = useState<FilterCriteria>({
