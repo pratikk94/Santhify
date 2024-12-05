@@ -19,11 +19,11 @@ const App: React.FC = () => {
         <div style={{ flex: 1, width:'100vw'}}>
           <Routes>
             {/* Public Login Route */}
-            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<Login />} />
 
             {/* Protected Routes */}
             <Route
-              path="/"
+              path="/dashboard"
               element={
                 <ProtectedRoute>
                   <Dashboard />
