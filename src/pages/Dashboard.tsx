@@ -71,7 +71,6 @@ const Dashboard: React.FC = () => {
   return (
     <div className="dashboard-layout">
       <TopNav />
-      <Sidebar />
       <div className="dashboard-main">
         <OverviewHeader />
         <StatsCards />
