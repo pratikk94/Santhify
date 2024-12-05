@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Button, Card, List, Modal, Input } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
-import '../styles/groups.css';
+import '../styles/Groups.css';
 
 const Groups: React.FC = () => {
   const [groups, setGroups] = useState<string[]>(['Team Alpha', 'Beta Squad', 'Project Gamma']);
