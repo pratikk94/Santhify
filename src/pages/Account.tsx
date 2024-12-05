@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes, NavLink } from 'react-router-dom';
-import '../styles/account.css';
+import '../styles/Account.css';
 
 import Sidebar from '../components/Navigation/Sidebar/Sidebar';
 import Dashboard from './Dashboard';
