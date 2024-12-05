@@ -4,7 +4,7 @@ import {
   SearchOutlined,
   FilterOutlined,
   SortAscendingOutlined,
-  PlusOutlined,
+  
 } from '@ant-design/icons';
 import './TopNav.css'
 
@@ -25,7 +25,7 @@ const TopNav: React.FC<GroupHeaderProps> = ({
   onSearchClick,
   onFilterClick,
   onSortClick,
-  onAddClick,
+  
 }) => {
   return (
     <div className="group-header">
