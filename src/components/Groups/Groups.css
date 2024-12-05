@@ -1,0 +1,116 @@
+/* Main Layout */
+.dashboard-layout {
+    display: flex;
+    height: 100vh;
+    background-color: #f9f9f9;
+  }
+  
+  .dashboard-main {
+    flex-grow: 1;
+    padding: 24px;
+    transition: margin-left 0.3s ease;
+  }
+  
+  .collapsed-sidebar {
+    margin-left: 80px; /* Adjust based on the collapsed sidebar width */
+  }
+  
+  .dashboard-main:not(.collapsed-sidebar) {
+    margin-left: 250px; /* Adjust based on the full sidebar width */
+  }
+  
+  /* Groups Page */
+  .groups-page {
+    padding: 24px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .groups-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  
+  .groups-header h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+    color: #333333;
+  }
+  
+  /* Group Cards */
+  .group-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    padding: 16px;
+    text-align: center;
+    background-color: #ffffff;
+  }
+  
+  .group-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .group-card .ant-card-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #635cf4;
+  }
+  
+  .group-card .ant-card-body {
+    padding: 0;
+    font-size: 14px;
+    color: #555555;
+  }
+  
+  /* Add Group Modal */
+  .ant-modal-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333333;
+  }
+  
+  .ant-input {
+    border-radius: 8px;
+    padding: 10px;
+  }
+  
+  .ant-modal-footer {
+    text-align: right;
+  }
+  
+  .ant-btn-primary {
+    background-color: #635cf4;
+    border-color: #635cf4;
+  }
+  
+  .ant-btn-primary:hover {
+    background-color: #5744c2;
+    border-color: #5744c2;
+  }
+  
+  /* Responsive Grid */
+  .ant-list-grid {
+    row-gap: 24px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .ant-list-grid {
+      column: 1 !important;
+    }
+  
+    .dashboard-main {
+      margin-left: 0 !important; /* Full-width for smaller screens */
+    }
+  
+    .groups-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+  }

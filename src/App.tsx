@@ -6,7 +6,7 @@ import Dashboard from './pages/Dashboard';
 import FileManager from './components/Library/FileManager';
 import Account from './pages/Account';
 import Payments from './pages/Payment';
-import Groups from './pages/Groups';
+import Groups from '../src/components/Groups/Groups';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import UserProfile from './components/Dashboard/UserProfile/UserProfile';
@@ -56,7 +56,7 @@ const App: React.FC = () => {
               path="/groups"
               element={
                 <ProtectedRoute>
-                  <Groups />
+                  <Groups/>
                 </ProtectedRoute>
               }
             />
