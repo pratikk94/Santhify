@@ -10,26 +10,36 @@ import {
   SettingOutlined,
 } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
-import './sidebar.css';
+import '../Sidebar/sidebar.css';
 
 const { Sider } = Layout;
 
 interface SidebarProps {
-  onCollapse?: (collapsed: boolean) => void; // Optional callback
+  onCollapse: (collapsed: boolean) => void; // Callback to notify parent of collapse state
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ onCollapse }) => {
   const [collapsed, setCollapsed] = useState<boolean>(true);
   const navigate = useNavigate();
 
+  // Adjust sidebar based on screen size
   useEffect(() => {
-    if (onCollapse) {
-      onCollapse(collapsed); // Call onCollapse only if it exists
-    }
-  }, [collapsed, onCollapse]);
+    const handleResize = () => {
+      setCollapsed(window.innerWidth < 768);
+    };
+
+    handleResize(); // Set initial state
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const toggleCollapsed = () => {
-    setCollapsed((prev) => !prev);
+    const newCollapsed = !collapsed;
+    setCollapsed(newCollapsed);
+    onCollapse(newCollapsed); // Notify parent
   };
 
   const menuItems = [
@@ -42,6 +52,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onCollapse }) => {
 
   return (
     <>
+      {/* Hamburger Button for small screens */}
       <Button
         className="hamburger-button"
         type="primary"
@@ -58,23 +69,22 @@ const Sidebar: React.FC<SidebarProps> = ({ onCollapse }) => {
       <Sider
         collapsible
         collapsed={collapsed}
-        onCollapse={(isCollapsed) => setCollapsed(isCollapsed)}
+        onCollapse={(collapsed) => setCollapsed(collapsed)}
         width={250}
-        collapsedWidth={80}
+        collapsedWidth={0}
         style={{
           height: '100vh',
           background: '#ffffff',
           position: 'fixed',
           zIndex: 999,
           borderRight: '1px solid #e0e0e0',
-          transition: 'all 0.3s ease',
         }}
       >
         <div className="logo">Logo</div>
         <Menu
           theme="light"
-          mode="inline"
           defaultSelectedKeys={['clients']}
+          mode="inline"
           onClick={({ key }) => {
             const path = menuItems.find((item) => item.key === key)?.path || '/';
             navigate(path);
