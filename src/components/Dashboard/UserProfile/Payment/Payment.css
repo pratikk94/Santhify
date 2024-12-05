@@ -1,0 +1,70 @@
+/* Payment Container */
+.payment-container {
+    padding: 16px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 16px;
+  }
+  
+  /* Header */
+  .payment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .payment-header h2 {
+    font-size: 24px;
+    color: #333333;
+    margin: 0;
+  }
+  
+  .payment-actions {
+    display: flex;
+    gap: 12px;
+  }
+  
+  .payment-actions .ant-btn {
+    font-size: 14px;
+  }
+  
+  /* Table */
+  .payment-table .ant-table-thead > tr > th {
+    background-color: #f8f8fc;
+    color: #635cf4;
+    font-weight: bold;
+    border: none;
+  }
+  
+  .payment-table .ant-table-tbody > tr > td {
+    font-size: 14px;
+    color: #333333;
+    border: none;
+  }
+  
+  /* Account Data */
+  .account-data {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .account-data img {
+    width: 50px;
+    height: auto;
+  }
+  
+  /* Badge */
+  .ant-badge-status-success .ant-badge-status-dot {
+    background-color: #52c41a;
+  }
+  
+  .ant-badge-status-warning .ant-badge-status-dot {
+    background-color: #faad14;
+  }
+  
+  .ant-badge-status-error .ant-badge-status-dot {
+    background-color: #ff4d4f;
+  }

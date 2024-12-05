@@ -1,0 +1,87 @@
+/* User Profile Container */
+.user-profile-container {
+    padding: 16px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 16px;
+  }
+  
+  /* User Header */
+  .user-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .user-info {
+    margin-left: 16px;
+  }
+  
+  .user-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+    color: #333333;
+  }
+  
+  .user-stats {
+    font-size: 14px;
+    color: #777777;
+  }
+  
+  /* Tabs */
+  .user-tabs .ant-tabs-tab {
+    font-size: 16px;
+  }
+  
+  .user-tabs .ant-tabs-nav {
+    margin-bottom: 16px;
+  }
+  
+  .user-tabs .ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: #635CF4;
+    font-weight: bold;
+  }
+  
+  .user-tabs .ant-tabs-ink-bar {
+    background: #635CF4;
+  }
+  
+  /* User Details */
+  .user-profile-details p {
+    font-size: 16px;
+    margin: 8px 0;
+  }
+  
+  /* List Styling */
+  .ant-list-item {
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .ant-list-item-meta-title {
+    font-weight: 500;
+    color: #333333;
+  }
+  
+  .ant-list-item-meta-description {
+    color: #777777;
+  }
+  
+  /* Empty State */
+  .empty-state {
+    text-align: center;
+    font-size: 16px;
+    color: #888888;
+    margin-top: 16px;
+  }
+  
+  /* Buttons */
+  button.ant-btn-link {
+    color: #f5222d;
+  }
+  
+  button.ant-btn-link:hover {
+    color: #cf1322;
+  }

@@ -37,15 +37,12 @@
 /* User Status Icons */
 .user-icons {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
   justify-content: center;
-  gap: 12px; /* Space between icons */
+  gap: 16px;
   margin: 12px 0;
 }
 
-/* Icon Container */
-.user-icons .icon-container {
+.icon-container {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -53,15 +50,13 @@
 }
 
 /* Increased Icon Size */
-.user-icons .icon-container .default-icon {
+.icon-container .default-icon {
   font-size: 32px;
-  width: 40px;
-  height: 40px;
   color: #635cf4; /* Purple */
 }
 
 /* Overlay Icon */
-.user-icons .icon-container .overlay-icon {
+.icon-container .overlay-icon {
   position: absolute;
   top: -10px;
   right: -10px;
@@ -85,22 +80,21 @@
 .user-actions {
   display: flex;
   justify-content: center;
-  gap: 8px;
+  gap: 12px;
 }
 
-.user-actions .profile-button,
-.user-actions .contact-button {
+.profile-button,
+.contact-button {
   border: 1px solid #635cf4;
   color: #635cf4;
   padding: 8px 16px;
   border-radius: 4px;
   background-color: #ffffff;
-  cursor: pointer;
   transition: background-color 0.2s, color 0.2s;
 }
 
-.user-actions .profile-button:hover,
-.user-actions .contact-button:hover {
+.profile-button:hover,
+.contact-button:hover {
   background-color: #635cf4;
   color: #ffffff;
 }

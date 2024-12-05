@@ -44,7 +44,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onCollapse }) => {
   };
 
   const menuItems = [
-    { key: 'clients', icon: <UserOutlined />, label: 'Clients', path: '/clients' },
+    { key: 'clients', icon: <UserOutlined />, label: 'Clients', path: '/client' },
     { key: 'groups', icon: <TeamOutlined />, label: 'Groups', path: '/groups' },
     { key: 'library', icon: <BookOutlined />, label: 'Library', path: '/library' },
     { key: 'payments', icon: <DollarOutlined />, label: 'Payments', path: '/payments' },

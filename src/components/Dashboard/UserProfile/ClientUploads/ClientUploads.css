@@ -1,0 +1,69 @@
+/* Container Styling */
+.client-uploads-container {
+    padding: 16px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 16px;
+  }
+  
+  /* Table Styling */
+  .client-uploads-table .ant-table-thead > tr > th {
+    background-color: #f8f8fc;
+    color: #635cf4;
+    font-weight: bold;
+    border: none;
+    text-align: left;
+  }
+  
+  .client-uploads-table .ant-table-tbody > tr > td {
+    border: none;
+    font-size: 14px;
+    color: #333333;
+  }
+  
+  /* Upload Item Styling */
+  .upload-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .upload-name {
+    font-size: 16px;
+    color: #333333;
+    font-weight: bold;
+  }
+  
+  /* Date Styling */
+  .upload-date {
+    font-size: 14px;
+    color: #777777;
+  }
+  
+  /* Dropdown Styling */
+  .client-uploads-table .ant-dropdown-trigger {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .client-uploads-table .ant-btn-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f8fc;
+    color: #635cf4;
+    border: none;
+    box-shadow: none;
+  }
+  
+  .client-uploads-table .ant-btn-circle:hover {
+    background-color: #e6e6f7;
+    color: #5148c6;
+  }
+  
+  .client-uploads-table .ant-btn-link {
+    color: #ff4d4f;
+    font-weight: bold;
+  }

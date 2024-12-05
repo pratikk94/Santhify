@@ -6,6 +6,7 @@ import {
   CheckCircleOutlined,
   CloseCircleOutlined,
 } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './userCard.css';
 
 interface User {
@@ -22,6 +23,12 @@ interface UserCardProps {
 }
 
 const UserCard: React.FC<UserCardProps> = ({ user }) => {
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  const handleProfileClick = () => {
+    navigate(`/profile/${user.id}`); // Navigate to the UserProfile page with user ID
+  };
+
   return (
     <Card bordered className="user-card">
       {/* User Avatar */}
@@ -31,7 +38,7 @@ const UserCard: React.FC<UserCardProps> = ({ user }) => {
           src={user.icon}
           style={{ backgroundColor: '#D8D5FE', color: '#635CF4' }}
         >
-          {user.name[0]}
+          {user.name[0].toUpperCase()}
         </Avatar>
       </div>
 
@@ -41,32 +48,36 @@ const UserCard: React.FC<UserCardProps> = ({ user }) => {
         <div className="user-date">Date added: {user.date_added}</div>
       </div>
 
-{/* User Status Icons */}
-<div className="user-icons single-line">
-  {/* Payment Status */}
-  <div className="icon-container">
-    <DollarOutlined className="default-icon" />
-    {user.is_payment_completed ? (
-      <CheckCircleOutlined className="overlay-icon success-icon" />
-    ) : (
-      <CloseCircleOutlined className="overlay-icon error-icon" />
-    )}
-  </div>
+      {/* User Status Icons */}
+      <div className="user-icons">
+        {/* Payment Status */}
+        <div className="icon-container">
+          <DollarOutlined className="default-icon" />
+          {user.is_payment_completed ? (
+            <CheckCircleOutlined className="overlay-icon success-icon" />
+          ) : (
+            <CloseCircleOutlined className="overlay-icon error-icon" />
+          )}
+        </div>
 
-  {/* Verification Status */}
-  <div className="icon-container">
-    <MailOutlined className="default-icon" />
-    {user.is_verified ? (
-      <CheckCircleOutlined className="overlay-icon success-icon" />
-    ) : (
-      <CloseCircleOutlined className="overlay-icon error-icon" />
-    )}
-  </div>
-</div>
+        {/* Verification Status */}
+        <div className="icon-container">
+          <MailOutlined className="default-icon" />
+          {user.is_verified ? (
+            <CheckCircleOutlined className="overlay-icon success-icon" />
+          ) : (
+            <CloseCircleOutlined className="overlay-icon error-icon" />
+          )}
+        </div>
+      </div>
 
       {/* Action Buttons */}
       <div className="user-actions">
-        <Button type="default" className="profile-button">
+        <Button
+          type="default"
+          className="profile-button"
+          onClick={handleProfileClick}
+        >
           Profile
         </Button>
         <Button type="default" className="contact-button">

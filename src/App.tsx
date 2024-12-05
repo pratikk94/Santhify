@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './pages/LoginPage';
 import ProtectedRoute from './authentication/ProtectedRoute';
+import Login from './pages/LoginPage';
 import Dashboard from './pages/Dashboard';
 import FileManager from './components/Library/FileManager';
 import Account from './pages/Account';
@@ -9,16 +9,17 @@ import Payments from './pages/Payment';
 import Groups from './pages/Groups';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import UserProfile from './components/Dashboard/UserProfile/UserProfile';
 
 const App: React.FC = () => {
   return (
     <Router>
-      <div style={{ display: 'flex', minHeight: '100vh',width:"100vw" }}>
+      <div style={{ display: 'flex', minHeight: '100vh', width: '100vw' }}>
         <div style={{ flex: 1 }}>
           <Routes>
             <Route path="/" element={<Login />} />
             <Route
-              path="/dashboard"
+              path="/client"
               element={
                 <ProtectedRoute>
                   <Dashboard />
@@ -26,18 +27,10 @@ const App: React.FC = () => {
               }
             />
             <Route
-              path="/clients"
+              path="/profile/:userId"
               element={
                 <ProtectedRoute>
-                  <Dashboard />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/groups"
-              element={
-                <ProtectedRoute>
-                  <Groups />
+                  <UserProfile />
                 </ProtectedRoute>
               }
             />
@@ -56,6 +49,14 @@ const App: React.FC = () => {
               element={
                 <ProtectedRoute>
                   <Payments />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/groups"
+              element={
+                <ProtectedRoute>
+                  <Groups />
                 </ProtectedRoute>
               }
             />
