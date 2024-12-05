@@ -28,6 +28,7 @@ const FileManager: React.FC = () => {
   const [path, setPath] = useState<string[]>(['Home']);
   const [currentFolderId, setCurrentFolderId] = useState<string | null>(null);
   const [highlightedFolder, setHighlightedFolder] = useState<string | null>(null);
+  const [collapsed, setCollapsed] = useState<boolean>(false); // Sidebar collapsed state
 
   const enterFolder = (folderId: string, folderName: string) => {
     setCurrentFolderId(folderId);
@@ -57,8 +58,8 @@ const FileManager: React.FC = () => {
 
   return (
     <div className="dashboard-layout">
-      <Sidebar />
-      <div className="dashboard-main">
+      <Sidebar onCollapse={(isCollapsed) => setCollapsed(isCollapsed)} />
+      <div className={`dashboard-main ${collapsed ? 'collapsed-sidebar' : ''}`}>
         <TopNav path={path} onGoBack={goBack} />
         <DndProvider backend={HTML5Backend}>
           <div className="file-manager">

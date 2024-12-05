@@ -24,9 +24,9 @@
   width: 80px; /* Narrower sidebar for smaller screens */
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .dashboard-layout .sidebar {
-    width: 80px; /* Narrower sidebar for smaller screens */
+    width: 80px; /* Sidebar collapses to narrower width */
   }
 }
 
@@ -46,10 +46,24 @@
   margin-left: 80px; /* Adjust margin when sidebar is collapsed */
 }
 
+@media (max-width: 1024px) {
+  .dashboard-main {
+    margin-left: 80px; /* Adjust for collapsed sidebar */
+    padding: 14px; /* Reduce padding for medium screens */
+  }
+}
+
 @media (max-width: 768px) {
   .dashboard-main {
     margin-left: 80px; /* Adjust for collapsed sidebar */
-    padding: 12px; /* Reduce padding for smaller screens */
+    padding: 12px; /* Reduce padding further for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-main {
+    margin-left: 0; /* Sidebar hidden or overlays */
+    padding: 8px; /* Minimal padding for mobile screens */
   }
 }
 
@@ -73,6 +87,18 @@
   min-height: 0; /* Prevent height issues in flex containers */
 }
 
+@media (max-width: 768px) {
+  .dashboard-content {
+    padding: 12px; /* Reduce padding for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-content {
+    padding: 8px; /* Minimal padding for very small screens */
+  }
+}
+
 /* Stats Section */
 .stats {
   display: flex;
@@ -88,8 +114,24 @@
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   flex: 1;
-  min-width: 120px;
+  min-width: 200px; /* Ensure minimum width for cards */
+  max-width: 300px; /* Prevent cards from becoming too wide */
   text-align: center;
+}
+
+/* Responsive Stats Section */
+@media (max-width: 768px) {
+  .stat {
+    padding: 12px; /* Adjust padding for smaller screens */
+    min-width: 180px; /* Adjust minimum width */
+  }
+}
+
+@media (max-width: 480px) {
+  .stat {
+    padding: 8px; /* Adjust padding for mobile screens */
+    min-width: 150px; /* Adjust minimum width */
+  }
 }
 
 /* Buttons and Controls */
@@ -113,4 +155,9 @@ button:hover {
   color: #777;
   font-size: 16px;
   padding: 32px 0;
+}
+
+/* Utility Classes */
+.hidden {
+  display: none;
 }
