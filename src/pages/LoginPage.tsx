@@ -22,7 +22,7 @@ const Login: React.FC = () => {
 
       // Redirect to dashboard
       alert('Logged in successfully!');
-      navigate('/account');
+      navigate('/client');
     } else {
       alert('Invalid email or password. For testing, use test@example.com / password');
     }
