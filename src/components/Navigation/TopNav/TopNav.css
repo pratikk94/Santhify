@@ -1,13 +1,82 @@
-/* TopNav.css */
+/* Base styles */
 .top-nav {
+  display: flex;
+  justify-content: flex-start; /* Default left-alignment for all child elements */
+  padding: 16px 24px; /* Add sufficient padding on all sides */
+  background: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.top-nav-buttons {
+  margin-left: auto; /* Push this section to the right */
+}
+
+.top-nav-buttons .ant-btn {
+  min-width: 40px; /* Ensure buttons are slightly larger to fit the 24px icon */
+  min-height: 40px; /* Maintain button size for the 24px icon */
+  width: 40px; /* Fixed button size */
+  height: 40px; /* Fixed button size */
+  line-height: 40px; /* Center the icon vertically */
+  border-radius: 50%; /* Make buttons perfectly round */
+  display: flex; /* Use flex for icon alignment */
+  align-items: center; /* Center icon vertically */
+  justify-content: center; /* Center icon horizontally */
+  padding: 0; /* No extra padding, as the size is controlled */
+  color: #635cf4; /* Icon color */
+  border: none; /* Optional: Remove button border */
+  background-color: #f5f5f5; /* Optional: Light background for better visibility */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for visual depth */
+}
+
+.top-nav-buttons .ant-btn:hover {
+  background-color: #e0e0ff; /* Add hover effect for better UX */
+}
+
+.top-nav-buttons .ant-btn .anticon {
+  font-size: 24px; /* Set the icon size explicitly to 24px */
+  line-height: 1; /* Ensure the icon doesn't get misaligned */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .top-nav {
+    padding: 12px 16px; /* Reduce padding on smaller screens */
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start;
+  }
+
+  .top-nav-buttons {
+    margin-left: 0; /* Reset margin to align buttons to the left */
+    margin-top: 12px; /* Add spacing from other elements */
+    width: 100%; /* Make buttons full-width */
     display: flex;
-    justify-content: flex-end;
-    padding: 16px;
-    background: #ffffff;
-    border-bottom: 1px solid #e0e0e0;
+    justify-content: flex-end; /* Align buttons to the right */
+    padding-right: 16px; /* Ensure right-side padding for alignment */
   }
-  
+
   .top-nav-buttons .ant-btn {
-    border-radius: 50%;
-    color: #635cf4;
+    min-width: 40px; /* Maintain minimum button size */
+    min-height: 40px; /* Maintain minimum button size */
+    width: 40px; /* Fixed button size */
+    height: 40px; /* Fixed button size */
   }
+
+  .top-nav-buttons .ant-btn .anticon {
+    font-size: 24px; /* Ensure consistent icon size across devices */
+  }
+}
+
+@media (max-width: 480px) {
+  .top-nav {
+    padding: 8px 12px; /* Further reduce padding for very small screens */
+  }
+
+  .top-nav-buttons .ant-btn {
+    width: 40px; /* Keep the button size consistent */
+    height: 40px; /* Keep the button size consistent */
+  }
+
+  .top-nav-buttons .ant-btn .anticon {
+    font-size: 24px; /* Maintain 24px icon size */
+  }
+}

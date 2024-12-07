@@ -1,12 +1,13 @@
 import React from 'react';
-import { Card, Button, Avatar } from 'antd';
+import { Card, Button, Avatar, Dropdown, Menu } from 'antd';
 import {
   DollarOutlined,
   MailOutlined,
   CheckCircleOutlined,
   CloseCircleOutlined,
+  MoreOutlined,
 } from '@ant-design/icons';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 import './userCard.css';
 
 interface User {
@@ -23,20 +24,43 @@ interface UserCardProps {
 }
 
 const UserCard: React.FC<UserCardProps> = ({ user }) => {
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleProfileClick = () => {
-    navigate(`/profile/${user.id}`); // Navigate to the UserProfile page with user ID
+    navigate(`/profile/${user.id}`);
   };
+
+  const menu = (
+    <Menu>
+      <Menu.Item key="1" onClick={() => alert('View Details')}>
+        View Details
+      </Menu.Item>
+      <Menu.Item key="2" onClick={() => alert('Edit User')}>
+        Edit User
+      </Menu.Item>
+      <Menu.Item key="3" onClick={() => alert('Delete User')}>
+        Delete User
+      </Menu.Item>
+    </Menu>
+  );
 
   return (
     <Card bordered className="user-card">
+      {/* Three Dots Dropdown */}
+      <Dropdown overlay={menu} trigger={['click']}>
+        <Button
+          type="text"
+          icon={<MoreOutlined />}
+          className="three-dots"
+        />
+      </Dropdown>
+
       {/* User Avatar */}
       <div className="user-avatar">
         <Avatar
-          size={64}
+          size={36}
           src={user.icon}
-          style={{ backgroundColor: '#D8D5FE', color: '#635CF4' }}
+          style={{ backgroundColor: '#D8D5FE', color: '#635CF4', fontSize: '16px' }}
         >
           {user.name[0].toUpperCase()}
         </Avatar>
@@ -45,7 +69,7 @@ const UserCard: React.FC<UserCardProps> = ({ user }) => {
       {/* User Information */}
       <div className="user-info">
         <div className="user-name">{user.name}</div>
-        <div className="user-date">Date added: {user.date_added}</div>
+        <div className="user-date">Added: {user.date_added}</div>
       </div>
 
       {/* User Status Icons */}

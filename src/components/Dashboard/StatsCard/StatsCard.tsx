@@ -7,34 +7,44 @@ const { Title, Text } = Typography;
 const StatsCards: React.FC = () => {
   return (
     <div className="stats-cards">
-      <Row gutter={[16, 16]} justify="center">
+      <Row gutter={[16, 16]} justify="start">
         {/* Total Clients */}
-        <Col xs={24} sm={12} md={12} lg={8}>
+        <Col xs={24} sm={12} md={12} lg={10}>
           <Card bordered className="stat-card">
             <div className="stat-content">
-              <div className="stat-section">
-                <Title level={4} className="stat-title">Total Clients</Title>
+              <div className="stat-section with-margin">
+                <Title level={5} className="stat-title">
+                  Total Clients
+                </Title>
                 <Text className="stat-number">453</Text>
               </div>
+              <div className="stat-separator"></div>
               <div className="stat-section">
-                <Title level={4} className="stat-title">Last 30 Days</Title>
-                <Text className="stat-small-number">32</Text>
+                <Title level={5} className="stat-title">
+                  Last 30 Days
+                </Title>
+                <Text className="stat-number">32</Text>
               </div>
             </div>
           </Card>
         </Col>
 
         {/* Total Assessments */}
-        <Col xs={24} sm={12} md={12} lg={8}>
+        <Col xs={24} sm={12} md={12} lg={14}>
           <Card bordered className="stat-card">
             <div className="stat-content">
               <div className="stat-section">
-                <Title level={4} className="stat-title">Total Assessments</Title>
+                <Title level={5} className="stat-title">
+                  Total Assessments
+                </Title>
                 <Text className="stat-number">3</Text>
               </div>
+              <div className="stat-separator"></div>
               <div className="stat-section">
-                <Title level={4} className="stat-title">Last 30 Days</Title>
-                <Text className="stat-small-number">32</Text>
+                <Title level={5} className="stat-title">
+                  Last 30 Days
+                </Title>
+                <Text className="stat-number">32</Text>
               </div>
             </div>
           </Card>

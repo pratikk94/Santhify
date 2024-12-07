@@ -1,30 +1,43 @@
 import React, { useState } from 'react';
-import { Input, Button, Space, Typography } from 'antd';
-import { SearchOutlined, SortAscendingOutlined, FilterOutlined, PlusOutlined } from '@ant-design/icons';
-import '../FiltersBar/FiltersBar.css';
-
-import AddNewUserModal from '../AddNewUser/AddNewUserModal';
-import FilterModal from '../Modal/FiltersModal/FiltersModal';
+import { Input, Button, Space, Typography, Dropdown, Menu } from 'antd';
+import {
+  SearchOutlined,
+  SortAscendingOutlined,
+  FilterOutlined,
+  MenuOutlined,
+} from '@ant-design/icons';
+import { Dayjs } from 'dayjs'; // Import Dayjs type
+import './FiltersBar.css';
 
 const { Text } = Typography;
+
+interface FilterCriteria {
+  countries: string[];
+  ageRange: [number, number];
+  dateRange: [Dayjs, Dayjs]; // Updated to use Dayjs
+  date_added: Dayjs; // Updated to use Dayjs
+}
+
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
 
 interface FiltersBarProps {
   onSearch: (value: string) => void;
   onSortBy: () => void;
-  onFilterApply: (filters: any) => void;
-  onAddUser: (user: any) => void; // Callback for handling added user
-  totalUsers: number; // Number of users to display
+  onFilterApply: (filters: FilterCriteria) => void; // Updated type
+  onAddUser: (user: User) => void;
+  totalUsers: number;
 }
 
 const FiltersBar: React.FC<FiltersBarProps> = ({
   onSearch,
   onSortBy,
   onFilterApply,
-  onAddUser,
   totalUsers,
 }) => {
-  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
-  const [isAddUserModalOpen, setIsAddUserModalOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,73 +47,70 @@ const FiltersBar: React.FC<FiltersBarProps> = ({
   };
 
   const handleFilterOpen = () => {
-    setIsFilterModalOpen(true);
+    const filters: FilterCriteria = {
+      countries: ['US', 'Canada'],
+      ageRange: [18, 30],
+      dateRange: [null as unknown as Dayjs, null as unknown as Dayjs], // Replace with Dayjs objects in real usage
+      date_added: null as unknown as Dayjs, // Replace with a Dayjs object
+    };
+    onFilterApply(filters); // Apply filters with correct structure
   };
 
-  const handleFilterClose = () => {
-    setIsFilterModalOpen(false);
-  };
-
-  const handleFilterApply = (filters: any) => {
-    onFilterApply(filters);
-    setIsFilterModalOpen(false);
-  };
-
-  const handleAddUserOpen = () => {
-    setIsAddUserModalOpen(true);
-  };
-
-  const handleAddUserClose = () => {
-    setIsAddUserModalOpen(false);
-  };
-
-  const handleAddUserSubmit = (formData: any) => {
-    onAddUser(formData); // Pass the form data back to the parent
-    setIsAddUserModalOpen(false); // Close the modal
-  };
+  const menu = (
+    <Menu>
+      <Menu.Item key="1" icon={<SortAscendingOutlined />} onClick={onSortBy}>
+        Sort By
+      </Menu.Item>
+      <Menu.Item key="2" icon={<FilterOutlined />} onClick={handleFilterOpen}>
+        Filters
+      </Menu.Item>
+    </Menu>
+  );
 
   return (
     <div className="filters-bar">
       <div className="filters-bar-left">
-        {/* Number of Users Label */}
-        <Text strong className="user-count-label">Showing {totalUsers} Users</Text>
+        <Text strong className="user-count-label">
+          Showing {totalUsers} Users
+        </Text>
       </div>
       <div className="filters-bar-right">
         <Space wrap>
-          {/* Search Input */}
           <Input
             placeholder="Search for user"
-            prefix={<SearchOutlined />}
+            prefix={<SearchOutlined style={{ color: '#6c63ff' }} />}
             value={searchTerm}
             onChange={handleSearch}
-            className="search-input"
+            className="styled-search-input"
+            aria-label="Search for user"
           />
-          {/* Sort By Button */}
-          <Button icon={<SortAscendingOutlined />} onClick={onSortBy}>
-            Sort By
-          </Button>
-          {/* Filters Button */}
-          <Button icon={<FilterOutlined />} onClick={handleFilterOpen}>
-            Filters
-          </Button>
-          {/* Add User Button */}
-          <Button icon={<PlusOutlined />} onClick={handleAddUserOpen}>
-            Add User
-          </Button>
+          <div className="button-group">
+            <Button
+              className="styled-button"
+              icon={<SortAscendingOutlined />}
+              onClick={onSortBy}
+              aria-label="Sort by"
+            >
+              Sort By
+            </Button>
+            <Button
+              className="styled-button"
+              icon={<FilterOutlined />}
+              onClick={handleFilterOpen}
+              aria-label="Open filters"
+            >
+              Filters
+            </Button>
+          </div>
+          <Dropdown overlay={menu} trigger={['click']} className="dropdown-menu">
+            <Button
+              className="styled-button menu-button"
+              icon={<MenuOutlined />}
+              aria-label="More actions"
+            />
+          </Dropdown>
         </Space>
       </div>
-      {/* Filter Modal */}
-      <FilterModal
-        visible={isFilterModalOpen}
-        onClose={handleFilterClose}
-        onApply={handleFilterApply}
-      />
-      {/* Add User Modal */}
-      <AddNewUserModal
-        isVisible={isAddUserModalOpen}
-        onClose={handleAddUserClose}
-        onNext={handleAddUserSubmit}
-      />
     </div>
   );
 };

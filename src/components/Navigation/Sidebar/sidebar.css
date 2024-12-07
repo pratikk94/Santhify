@@ -13,8 +13,6 @@
   transition: all 0.3s ease; /* Smooth transition for logo adjustments */
 }
 
-
-
 /* Hamburger Button */
 .hamburger-button {
   background: #4b49ac;
@@ -26,6 +24,10 @@
   width: 48px;
   height: 48px;
   transition: all 0.3s ease; /* Smooth transition for hover effects */
+  position: fixed;
+  top: 16px;
+  left: calc(250px + 16px); /* Position to the right of the sidebar */
+  z-index: 1000;
 }
 
 .hamburger-button:hover {
@@ -80,6 +82,10 @@
 }
 
 /* Sidebar Collapsed State */
+.sidebar-collapsed .hamburger-button {
+  left: 16px; /* Align button when sidebar is collapsed */
+}
+
 .sidebar-collapsed .logo {
   font-size: 12px; /* Adjust font size when sidebar is collapsed */
   margin: 8px; /* Reduce margin for smaller size */
@@ -91,10 +97,6 @@
   justify-content: center; /* Center menu items when sidebar is collapsed */
 }
 
-.sidebar-collapsed .hamburger-button {
-  left: 8px; /* Adjust button position when sidebar is collapsed */
-}
-
 /* Responsive Sidebar */
 @media (max-width: 768px) {
   .hamburger-button {
@@ -102,7 +104,6 @@
     top: 16px;
     left: 16px;
     z-index: 1000;
-    display: block;
   }
 
   .ant-menu {
@@ -117,22 +118,6 @@
     line-height: 64px;
     font-size: 16px;
   }
-}
-
-/* Sidebar Expanded State */
-.sidebar-expanded {
-  width: 250px;
-  transition: all 0.3s ease-in-out; /* Smooth expand/collapse transition */
-}
-
-.sidebar-collapsed {
-  width: 80px; /* Shrink sidebar width when collapsed */
-  transition: all 0.3s ease-in-out;
-}
-
-/* Transition Effects for Menu */
-.ant-menu:not(.ant-menu-inline-collapsed) .ant-menu-item {
-  transition: all 0.3s ease;
 }
 
 /* Sidebar for Very Small Screens */

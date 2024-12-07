@@ -1,50 +1,104 @@
 .filters-bar {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
-  justify-content: space-between; /* Distribute content between left and right */
-  margin-bottom: 16px;
+  padding: 16px;
   gap: 16px;
+  background-color: #f9f9f9;
 }
 
 .filters-bar-left {
-  flex: 1; /* Push left content to the left */
-  text-align: left;
+  flex: 1;
 }
 
 .filters-bar-right {
-  flex: 2; /* Push right content to the right */
-  text-align: right;
+  flex: 2;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .user-count-label {
-  font-size: 16px; /* Increase font size for better visibility */
-  font-weight: bold; /* Make the label bold */
-  color: #000; /* Black color for the label */
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
 }
 
-.search-input {
-  max-width: 250px; /* Restrict the width of the search input */
+.styled-search-input {
+  width: 240px;
+  border-radius: 24px;
+  border: 2px solid #6c63ff;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #6c63ff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  height: 40px; /* Match button height */
 }
 
-.filters-bar-right button {
-  margin-left: 8px; /* Add spacing between buttons */
+.styled-search-input::placeholder {
+  color: #6c63ff;
 }
 
+.styled-search-input:hover,
+.styled-search-input:focus {
+  border-color: #6c63ff;
+  box-shadow: 0 0 4px rgba(108, 99, 255, 0.7);
+}
+
+.styled-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #6c63ff;
+  color: #6c63ff;
+  border-radius: 24px;
+  background: transparent;
+  padding: 6px 16px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  height: 40px; /* Match search input height */
+}
+
+.styled-button:hover {
+  background-color: #6c63ff;
+  color: #fff;
+  border-color: #6c63ff;
+}
+
+.styled-button .anticon {
+  font-size: 16px;
+}
+
+.button-group {
+  display: flex;
+  gap: 8px;
+}
+
+.dropdown-menu {
+  display: none; /* Initially hidden */
+}
+
+/* Media query for responsiveness */
 @media (max-width: 768px) {
-  .filters-bar {
-    flex-direction: column; /* Stack items vertically on small screens */
-    align-items: flex-start;
+  .button-group {
+    display: none; /* Hide buttons on small screens */
   }
 
-  .filters-bar-left,
+  .dropdown-menu {
+    display: block; /* Show dropdown for small screens */
+  }
+
+  .filters-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
   .filters-bar-right {
     width: 100%;
-    text-align: left; /* Align everything to the left */
-    margin-bottom: 8px;
+    justify-content: flex-start;
   }
 
-  .filters-bar-right {
-    text-align: left; /* Ensure actions align to the left on small screens */
+  .styled-search-input {
+    width: 100%;
   }
 }

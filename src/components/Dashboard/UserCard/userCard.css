@@ -1,5 +1,6 @@
 /* User Card */
 .user-card {
+  position: relative; /* For positioning three dots */
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   padding: 16px;
@@ -14,11 +15,30 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
+/* Three Dots Button */
+.three-dots {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  color: #777; /* Neutral color for dots */
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.three-dots:hover {
+  color: #4b49ac; /* Highlight color on hover */
+}
+
 /* User Avatar */
 .user-avatar .ant-avatar {
   margin-bottom: 8px;
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
+  font-size: 16px;
+  line-height: 48px;
 }
 
 /* User Info */
@@ -49,18 +69,16 @@
   justify-content: center;
 }
 
-/* Increased Icon Size */
 .icon-container .default-icon {
-  font-size: 32px;
-  color: #635cf4; /* Purple */
+  font-size: 20px;
+  color: #635cf4;
 }
 
-/* Overlay Icon */
 .icon-container .overlay-icon {
   position: absolute;
-  top: -10px;
-  right: -10px;
-  font-size: 14px;
+  top: -8px;
+  right: -8px;
+  font-size: 12px;
   background: #ffffff;
   border-radius: 50%;
   padding: 2px;
@@ -69,11 +87,11 @@
 
 /* Tick and Cross Colors */
 .success-icon {
-  color: #4caf50; /* Green */
+  color: #4caf50;
 }
 
 .error-icon {
-  color: #f44336; /* Red */
+  color: #f44336;
 }
 
 /* Action Buttons */
@@ -87,7 +105,7 @@
 .contact-button {
   border: 1px solid #635cf4;
   color: #635cf4;
-  padding: 8px 16px;
+  padding: 6px 12px;
   border-radius: 4px;
   background-color: #ffffff;
   transition: background-color 0.2s, color 0.2s;

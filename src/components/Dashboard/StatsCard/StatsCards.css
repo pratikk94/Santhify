@@ -1,88 +1,98 @@
 .stats-cards {
-  margin-top: 24px;
-  margin-bottom: 24px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
 .stat-card {
-  padding: 24px;
   border-radius: 12px;
-  background: linear-gradient(145deg, #ffffff, #f0f0f0);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9ff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 100%;
+  max-width: 350px; /* Increased width for larger titles */
+  height: 200px; /* Increased height for better spacing */
 }
 
 .stat-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
 .stat-content {
-  display: flex; /* Flexbox layout */
-  align-items: center; /* Vertical alignment */
-  justify-content: space-between; /* Spread items evenly across */
-  text-align: center; /* Center-align text inside each section */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 16px; /* Padding for consistent spacing inside the card */
 }
 
 .stat-section {
-  flex: 1; /* Allow equal width for all sections */
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.stat-separator {
+  width: 1px;
+  height: 80%; /* Vertical separator spanning most of the height */
+  background-color: #e0e0e0;
+  margin: 0 12px; /* Add space around the separator */
 }
 
 .stat-title {
-  font-size: 16px;
-  font-weight: bold;
-  color: #333333;
-  margin-bottom: 4px;
+  font-size: 14px;
+  color: #5a5a5a;
+  white-space: nowrap; /* Prevent wrapping */
+  overflow: hidden; /* Avoid overflow issues */
+  text-overflow: ellipsis; /* Add ellipsis if the text overflows */
+  margin-bottom: 8px; /* Add spacing below the title */
 }
 
 .stat-number {
-  font-size: 28px;
-  font-weight: bold;
-  color: #635cf4;
-}
-
-.stat-small-number {
-  font-size: 20px;
-  font-weight: 500;
-  color: #777777;
+  font-size: 24px; /* Increased size for better readability */
+  font-weight: 600;
+  color: #000;
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-  .stat-content {
-    flex-direction: column; /* Stack items vertically on smaller screens */
-    gap: 8px;
+  .stats-cards {
+    flex-direction: column; /* Stack cards vertically */
+    gap: 16px; /* Add vertical spacing between stacked cards */
   }
 
-  .stat-title {
-    font-size: 14px;
-  }
-
-  .stat-number {
-    font-size: 24px;
-  }
-
-  .stat-small-number {
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 480px) {
   .stat-card {
-    padding: 16px;
+    max-width: 100%; /* Full width for stacked cards */
+    height: auto; /* Allow dynamic height based on content */
+    padding: 12px; /* Compact padding for smaller screens */
+  }
+
+  .stat-content {
+    flex-direction: row; /* Keep sections aligned horizontally */
+    justify-content: space-around; /* Evenly distribute sections */
+    align-items: center;
+    gap: 16px;
+  }
+
+  .stat-separator {
+    height: 1px; /* Change separator to horizontal */
+    width: 80%; /* Centered width for horizontal separator */
+    margin: 12px auto; /* Add vertical margin */
   }
 
   .stat-title {
-    font-size: 12px;
+    font-size: 12px; /* Slightly smaller title font */
   }
 
   .stat-number {
-    font-size: 20px;
-  }
-
-  .stat-small-number {
-    font-size: 14px;
+    font-size: 20px; /* Adjust number font size */
   }
 }

@@ -55,17 +55,17 @@ const Sidebar: React.FC<SidebarProps> = ({ onCollapse }) => {
     <>
       {/* Hamburger Button for small screens */}
       <Button
-        className="hamburger-button"
-        type="primary"
-        onClick={toggleCollapsed}
-        icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-        style={{
-          position: 'fixed',
-          top: 16,
-          left: 16,
-          zIndex: 1000,
-        }}
-      />
+  className={`hamburger-button ${collapsed ? 'sidebar-collapsed' : ''}`}
+  type="primary"
+  onClick={toggleCollapsed}
+  icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+  style={{
+    position: 'fixed',
+    top: 16,
+    left: collapsed ? 16 : 266, // Adjust based on sidebar state
+    zIndex: 1000,
+  }}
+/>
 
       <Sider
         collapsible
