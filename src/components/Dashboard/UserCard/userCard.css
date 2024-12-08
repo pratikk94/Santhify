@@ -1,91 +1,83 @@
-/* User Card */
+/* Base Card Styles */
 .user-card {
-  position: relative; /* For positioning three dots */
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 30vh;;
   padding: 16px;
-  background: #ffffff;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
 }
 
+/* Hover Effect */
 .user-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Three Dots Button */
-.three-dots {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  border: none;
-  background: transparent;
-  font-size: 18px;
-  color: #777; /* Neutral color for dots */
-  cursor: pointer;
-  transition: color 0.2s ease;
+/* Verified User Style */
+.verified-user {
+  border: 2px solid #4caf50;
 }
 
-.three-dots:hover {
-  color: #4b49ac; /* Highlight color on hover */
+/* Payment Completed Style */
+.payment-completed {
+  background-color: #e8f5e9;
 }
 
-/* User Avatar */
-.user-avatar .ant-avatar {
-  margin-bottom: 8px;
-  width: 48px;
-  height: 48px;
-  font-size: 16px;
-  line-height: 48px;
+/* Error Style */
+.user-card:not(.verified-user):not(.payment-completed) {
+  border: 2px solid #f44336;
 }
 
-/* User Info */
-.user-info .user-name {
-  font-size: 16px;
-  font-weight: bold;
-  color: #333333;
-}
-
-.user-info .user-date {
-  font-size: 14px;
-  color: #777777;
-  margin-top: 4px;
-}
-
-/* User Status Icons */
-.user-icons {
+/* User Information */
+.user-avatar {
   display: flex;
   justify-content: center;
-  gap: 16px;
-  margin: 12px 0;
+  margin-bottom: 16px;
+}
+
+.user-info {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.user-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+}
+
+.user-date {
+  font-size: 12px;
+  color: #888;
+}
+
+/* Status Icons */
+.user-icons {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 16px;
 }
 
 .icon-container {
   position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.icon-container .default-icon {
+.default-icon {
   font-size: 20px;
-  color: #635cf4;
+  color: #aaa;
 }
 
-.icon-container .overlay-icon {
+.overlay-icon {
   position: absolute;
-  top: -8px;
-  right: -8px;
-  font-size: 12px;
-  background: #ffffff;
-  border-radius: 50%;
-  padding: 2px;
-  border: 1px solid #e0e0e0;
+  top: -5px;
+  right: -5px;
+  font-size: 14px;
 }
 
-/* Tick and Cross Colors */
 .success-icon {
   color: #4caf50;
 }
@@ -97,22 +89,33 @@
 /* Action Buttons */
 .user-actions {
   display: flex;
-  justify-content: center;
-  gap: 12px;
+  justify-content: space-between;
 }
 
 .profile-button,
 .contact-button {
-  border: 1px solid #635cf4;
-  color: #635cf4;
-  padding: 6px 12px;
-  border-radius: 4px;
-  background-color: #ffffff;
-  transition: background-color 0.2s, color 0.2s;
+  flex: 1;
+  margin: 0 4px;
+  text-align: center;
 }
 
-.profile-button:hover,
-.contact-button:hover {
-  background-color: #635cf4;
-  color: #ffffff;
+/* Position the three dots at the top-right corner */
+.three-dots {
+  position: absolute;
+  top: 8px; /* Adjust as needed for spacing */
+  right: 8px; /* Adjust as needed for spacing */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #aaa; /* Default color for dots */
+  transition: color 0.2s ease;
+}
+
+.three-dots:hover {
+  color: #000; /* Darker color on hover for better visibility */
+}
+
+/* Add relative positioning to the card to anchor the absolute dots */
+.user-card {
+  position: relative;
 }

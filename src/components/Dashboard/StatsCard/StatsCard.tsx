@@ -9,10 +9,10 @@ const StatsCards: React.FC = () => {
     <div className="stats-cards">
       <Row gutter={[16, 16]} justify="start">
         {/* Total Clients */}
-        <Col xs={24} sm={12} md={12} lg={10}>
+        <Col xs={24} sm={12} md={12} lg={6}>
           <Card bordered className="stat-card">
             <div className="stat-content">
-              <div className="stat-section with-margin">
+              <div className="stat-section">
                 <Title level={5} className="stat-title">
                   Total Clients
                 </Title>
@@ -30,7 +30,7 @@ const StatsCards: React.FC = () => {
         </Col>
 
         {/* Total Assessments */}
-        <Col xs={24} sm={12} md={12} lg={14}>
+        <Col xs={24} sm={12} md={12} lg={6}>
           <Card bordered className="stat-card">
             <div className="stat-content">
               <div className="stat-section">

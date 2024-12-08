@@ -8,6 +8,7 @@ import {
   MoreOutlined,
 } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
+import classNames from 'classnames';
 import './userCard.css';
 
 interface User {
@@ -30,51 +31,67 @@ const UserCard: React.FC<UserCardProps> = ({ user }) => {
     navigate(`/profile/${user.id}`);
   };
 
+  const handleMenuClick = (action: string) => {
+    switch (action) {
+      case 'view':
+        alert('View Details');
+        break;
+      case 'edit':
+        alert('Edit User');
+        break;
+      case 'delete':
+        alert('Delete User');
+        break;
+      default:
+        break;
+    }
+  };
+
   const menu = (
     <Menu>
-      <Menu.Item key="1" onClick={() => alert('View Details')}>
+      <Menu.Item key="1" onClick={() => handleMenuClick('view')}>
         View Details
       </Menu.Item>
-      <Menu.Item key="2" onClick={() => alert('Edit User')}>
+      <Menu.Item key="2" onClick={() => handleMenuClick('edit')}>
         Edit User
       </Menu.Item>
-      <Menu.Item key="3" onClick={() => alert('Delete User')}>
+      <Menu.Item key="3" onClick={() => handleMenuClick('delete')}>
         Delete User
       </Menu.Item>
     </Menu>
   );
 
+  const cardClasses = classNames('user-card', {
+    'verified-user': user.is_verified,
+    'payment-completed': user.is_payment_completed,
+  });
+
   return (
-    <Card bordered className="user-card">
-      {/* Three Dots Dropdown */}
-      <Dropdown overlay={menu} trigger={['click']}>
-        <Button
-          type="text"
-          icon={<MoreOutlined />}
-          className="three-dots"
-        />
+    <Card bordered className={cardClasses}>
+      <Dropdown overlay={menu} trigger={['click']} placement="bottomRight">
+        <Button type="text" icon={<MoreOutlined />} className="three-dots" />
       </Dropdown>
 
-      {/* User Avatar */}
       <div className="user-avatar">
         <Avatar
           size={36}
           src={user.icon}
-          style={{ backgroundColor: '#D8D5FE', color: '#635CF4', fontSize: '16px' }}
+          style={{
+            backgroundColor: user.is_verified ? '#E8F5E9' : '#FDEDEC',
+            color: user.is_verified ? '#4CAF50' : '#F44336',
+            fontSize: '16px',
+          }}
         >
           {user.name[0].toUpperCase()}
         </Avatar>
       </div>
 
-      {/* User Information */}
       <div className="user-info">
         <div className="user-name">{user.name}</div>
         <div className="user-date">Added: {user.date_added}</div>
       </div>
 
-      {/* User Status Icons */}
       <div className="user-icons">
-        {/* Payment Status */}
         <div className="icon-container">
           <DollarOutlined className="default-icon" />
           {user.is_payment_completed ? (
@@ -84,7 +101,6 @@ const UserCard: React.FC<UserCardProps> = ({ user }) => {
           )}
         </div>
 
-        {/* Verification Status */}
         <div className="icon-container">
           <MailOutlined className="default-icon" />
           {user.is_verified ? (
@@ -95,13 +111,8 @@ const UserCard: React.FC<UserCardProps> = ({ user }) => {
         </div>
       </div>
 
-      {/* Action Buttons */}
       <div className="user-actions">
-        <Button
-          type="default"
-          className="profile-button"
-          onClick={handleProfileClick}
-        >
+        <Button type="default" className="profile-button" onClick={handleProfileClick}>
           Profile
         </Button>
         <Button type="default" className="contact-button">

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Pagination } from 'antd';
 import './UserCardsGrid.css';
 import UserCard from '../UserCard/UserCard';
@@ -24,13 +24,35 @@ interface UserCardsGridProps {
 
 const UserCardsGrid: React.FC<UserCardsGridProps> = ({ searchTerm, filters, sortOrder }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 8;
+  const [itemsPerRow, setItemsPerRow] = useState(8); // Default to 8 elements per row
+  const gridRef = useRef<HTMLDivElement>(null);
 
+  // Dynamically calculate the number of items per row
+  useEffect(() => {
+    const calculateItemsPerRow = () => {
+      if (gridRef.current) {
+        const gridWidth = gridRef.current.offsetWidth;
+        const cardWidth = 280; // Width of a single card
+        const items = Math.floor(gridWidth / cardWidth); // Calculate number of items per row
+        setItemsPerRow(items || 1); // Fallback to at least 1 if calculation fails
+      }
+    };
+
+    calculateItemsPerRow(); // Calculate on load
+    window.addEventListener('resize', calculateItemsPerRow); // Recalculate on resize
+
+    return () => {
+      window.removeEventListener('resize', calculateItemsPerRow); // Clean up event listener
+    };
+  }, []);
+
+  // Total items to display per page
+  const pageSize = itemsPerRow * 2;
+
+  // Filter users based on search term, filters, and sorting
   const filteredUsers = mockUsers
     // Search Filter
-    .filter((user) =>
-      user.name.toLowerCase().includes(searchTerm.toLowerCase())
-    )
+    .filter((user) => user.name.toLowerCase().includes(searchTerm.toLowerCase()))
     // Country Filter
     .filter((user) =>
       filters.countries.length ? filters.countries.includes(user.country) : true
@@ -61,20 +83,22 @@ const UserCardsGrid: React.FC<UserCardsGridProps> = ({ searchTerm, filters, sort
       sortOrder === 'asc' ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name)
     );
 
+  // Paginate users
   const paginatedUsers = filteredUsers.slice(
     (currentPage - 1) * pageSize,
     currentPage * pageSize
   );
 
+  // Handle page changes
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
 
   return (
     <div className="user-cards-grid">
-      {paginatedUsers.length > 0 ? (
+      {filteredUsers.length > 0 ? (
         <>
-          <div className="user-grid">
+          <div className="user-grid" ref={gridRef}>
             {paginatedUsers.map((user) => (
               <div key={user.id} className="user-card-wrapper">
                 <UserCard user={user} />

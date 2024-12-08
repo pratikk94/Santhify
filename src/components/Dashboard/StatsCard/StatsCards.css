@@ -1,35 +1,45 @@
 .stats-cards {
   margin-top: 16px;
   margin-bottom: 16px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
+  width: 100%;
 }
 
 .stat-card {
+  max-width: 100%; /* Ensure cards take up available space */
+  min-width: 200px; /* Ensure minimum width */
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background-color: #f9f9ff;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 350px; /* Increased width for larger titles */
-  height: 200px; /* Increased height for better spacing */
+  justify-content: start;
+  height: 200px;
 }
 
-.stat-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+.stat-title {
+  font-size: 12px; /* Adjust font size */
+  color: #5a5a5a;
+  text-align: center;
+  white-space: nowrap; /* Prevent text wrapping */
+  overflow: hidden; /* Avoid overflow */
+  text-overflow: ellipsis; /* Add ellipsis for truncated text */
+  margin-bottom: 8px;
+}
+
+.stat-number {
+  font-size: 18px; /* Adjusted font size */
+  font-weight: 600;
+  color: #000;
+  text-align: center;
 }
 
 .stat-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 8px;
   height: 100%;
-  padding: 16px; /* Padding for consistent spacing inside the card */
 }
 
 .stat-section {
@@ -42,57 +52,23 @@
 
 .stat-separator {
   width: 1px;
-  height: 80%; /* Vertical separator spanning most of the height */
+  height: 80%;
   background-color: #e0e0e0;
-  margin: 0 12px; /* Add space around the separator */
-}
-
-.stat-title {
-  font-size: 14px;
-  color: #5a5a5a;
-  white-space: nowrap; /* Prevent wrapping */
-  overflow: hidden; /* Avoid overflow issues */
-  text-overflow: ellipsis; /* Add ellipsis if the text overflows */
-  margin-bottom: 8px; /* Add spacing below the title */
-}
-
-.stat-number {
-  font-size: 24px; /* Increased size for better readability */
-  font-weight: 600;
-  color: #000;
+  margin: 0 8px;
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-  .stats-cards {
-    flex-direction: column; /* Stack cards vertically */
-    gap: 16px; /* Add vertical spacing between stacked cards */
-  }
-
   .stat-card {
-    max-width: 100%; /* Full width for stacked cards */
-    height: auto; /* Allow dynamic height based on content */
-    padding: 12px; /* Compact padding for smaller screens */
-  }
-
-  .stat-content {
-    flex-direction: row; /* Keep sections aligned horizontally */
-    justify-content: space-around; /* Evenly distribute sections */
-    align-items: center;
-    gap: 16px;
-  }
-
-  .stat-separator {
-    height: 1px; /* Change separator to horizontal */
-    width: 80%; /* Centered width for horizontal separator */
-    margin: 12px auto; /* Add vertical margin */
+    max-width: 100%; /* Full width for smaller screens */
+    height: auto; /* Allow dynamic height */
   }
 
   .stat-title {
-    font-size: 12px; /* Slightly smaller title font */
+    font-size: 10px;
   }
 
   .stat-number {
-    font-size: 20px; /* Adjust number font size */
+    font-size: 14px;
   }
 }

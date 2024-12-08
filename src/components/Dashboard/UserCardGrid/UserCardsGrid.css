@@ -1,49 +1,85 @@
 /* User Cards Grid */
 .user-cards-grid {
   padding: 16px;
-  background: #ffffff;
+  background: #f9f9f9; /* Light background for better contrast */
   display: flex;
   flex-direction: column;
-  gap: 16px; /* Space between grid and pagination */
+  gap: 24px; /* Increased gap between grid and pagination for clarity */
+  border-radius: 8px; /* Add subtle rounding to container */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  box-sizing: border-box;
 }
 
+/* User Grid Layout */
 .user-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 users per row by default */
-  gap: 16px; /* Space between cards */
-  width: 100%;
+  grid-template-columns: repeat(4, minmax(240px, 1fr)); /* Ensure min size for cards */
+  gap: 24px; /* Space between cards */
   justify-items: center; /* Center-align cards */
+  align-items: start; /* Align cards to the top */
+  width: 100%;
   box-sizing: border-box;
 }
 
 /* Responsive Adjustments */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .user-grid {
-    grid-template-columns: repeat(3, 1fr); /* 3 users per row */
+    grid-template-columns: repeat(3, minmax(240px, 1fr)); /* 3 users per row */
   }
 }
 
 @media (max-width: 768px) {
   .user-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 users per row */
+    grid-template-columns: repeat(2, minmax(200px, 1fr)); /* 2 users per row */
+    gap: 16px; /* Reduce gap for smaller screens */
   }
 }
 
 @media (max-width: 480px) {
   .user-grid {
-    grid-template-columns: repeat(1, 1fr); /* 1 user per row */
+    grid-template-columns: repeat(1, minmax(200px, 1fr)); /* 1 user per row */
   }
 }
 
 /* User Card Wrapper */
 .user-card-wrapper {
   width: 100%;
-  max-width: 300px; /* Optional: Limit the max width of cards */
+  max-width: 280px; /* Limit the max width of cards for consistent scaling */
+  border-radius: 8px; /* Add subtle rounding to cards */
 }
 
 /* Pagination Styling */
 .pagination {
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 16px 0;
+  gap: 8px; /* Add spacing between pagination items */
+}
+
+.pagination .ant-pagination-item-active {
+  background-color: #f8f8f8; /* Highlight active page */
+  border-color: #635cf4; /* Match border with background */
+  color: #000;
+  font-weight: bold;
+}
+
+.pagination .ant-pagination-item:hover {
+  border-color: #635cf4; /* Add hover effect to pagination items */
+}
+
+.pagination .ant-pagination-item {
+  border-radius: 4px; /* Add slight rounding to pagination items */
+}
+
+/* Empty State Styling */
+.empty-state {
+  text-align: center;
+  font-size: 16px;
+  color: #888888;
+  margin-top: 32px;
+  padding: 16px;
+  background: #ffffff;
+  border: 1px dashed #cccccc;
+  border-radius: 8px;
 }

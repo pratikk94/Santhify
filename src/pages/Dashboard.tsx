@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Sidebar from '../components/Navigation/Sidebar/Sidebar';
 import '../styles/dashboard.css';
 import TopNav from '../components/Navigation/TopNav/TopNav';
-import OverviewHeader from '../components/Navigation/OverviewHeader/OverviewHeader';
+// import OverviewHeader from '../components/Navigation/OverviewHeader/OverviewHeader';
 import StatsCards from '../components/Dashboard/StatsCard/StatsCard';
 import UserCardsGrid from '../components/Dashboard/UserCardGrid/UserCardGrid';
 import FiltersBar from '../components/Dashboard/FiltersBar/FiltersBar';
@@ -47,7 +47,7 @@ const Dashboard: React.FC = () => {
       <Sidebar onCollapse={(isCollapsed) => setCollapsed(isCollapsed)} />
       <div className={`dashboard-main ${collapsed ? 'collapsed-sidebar' : ''}`}>
         <TopNav />
-        <OverviewHeader />
+        {/* <OverviewHeader /> */}
         <StatsCards />
         <FiltersBar
           onSearch={handleSearch}
