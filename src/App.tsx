@@ -12,6 +12,7 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import UserProfile from './components/Dashboard/UserProfile/UserProfile';
 import MyGroups from './components/Groups/MyGroup/MyGroups';
 import Account from './pages/Account';
+import UserManagement from './pages/UserManagement';
 
 const App: React.FC = () => {
   return (
@@ -78,6 +79,14 @@ const App: React.FC = () => {
               element={
                 <ProtectedRoute>
                   <Account />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/user-management"
+              element={
+                <ProtectedRoute>
+                  <UserManagement />
                 </ProtectedRoute>
               }
             />

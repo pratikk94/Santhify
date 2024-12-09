@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Table, Tag, Button } from 'antd';
 import '../styles/Payment.css';
+import Sidebar from '../components/Navigation/Sidebar/Sidebar';
 
 interface Payment {
   key: string;
@@ -35,8 +36,20 @@ const Payments: React.FC = () => {
     },
   ];
 
+  const [collapsed, setCollapsed] = useState<boolean>(false); // State to track sidebar collapse
+
+
   return (
-    <div className="payments-page">
+    <div className="dashboard-layout">
+      {/* Sidebar */}
+      <Sidebar
+        
+        onCollapse={(isCollapsed) => setCollapsed(isCollapsed)} // Handle collapse
+      />
+
+      {/* Main Content */}
+      <div className={`dashboard-main ${collapsed ? 'collapsed-sidebar' : ''}`}>
+      <div className="payments-page">
       <div className="payments-header">
         <h2>Payments</h2>
         <Button type="primary">Add Payment</Button>
@@ -44,6 +57,9 @@ const Payments: React.FC = () => {
 
       <Table columns={columns} dataSource={payments} />
     </div>
+      </div>
+    </div>
+    
   );
 };
 

@@ -8,6 +8,7 @@ import {
   BookOutlined,
   DollarOutlined,
   SettingOutlined,
+  UserSwitchOutlined 
 } from '@ant-design/icons';
 import { useNavigate, useLocation } from 'react-router-dom'; // Added `useLocation` for highlighting
 import '../Sidebar/sidebar.css';
@@ -51,6 +52,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onCollapse }) => {
     { key: 'library', icon: <BookOutlined />, label: 'Library', path: '/library' },
     { key: 'payments', icon: <DollarOutlined />, label: 'Payments', path: '/payments' },
     { key: 'account', icon: <SettingOutlined />, label: 'Account', path: '/account' },
+    { key: 'management', icon: <UserSwitchOutlined />, label: 'UserManagement', path:'/user-management'},
   ];
 
   // Determine the active tab based on the current path
