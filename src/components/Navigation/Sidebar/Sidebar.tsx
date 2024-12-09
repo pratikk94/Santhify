@@ -9,16 +9,18 @@ import {
   DollarOutlined,
   SettingOutlined,
 } from '@ant-design/icons';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom'; // Added `useLocation` for highlighting
 import '../Sidebar/sidebar.css';
 
 const { Sider } = Layout;
+
 interface SidebarProps {
   onCollapse?: (collapsed: boolean) => void; // Optional callback
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ onCollapse }) => {
   const [collapsed, setCollapsed] = useState<boolean>(true);
+  const location = useLocation(); // Get the current location
   const navigate = useNavigate();
 
   // Adjust sidebar based on screen size
@@ -51,21 +53,24 @@ const Sidebar: React.FC<SidebarProps> = ({ onCollapse }) => {
     { key: 'account', icon: <SettingOutlined />, label: 'Account', path: '/account' },
   ];
 
+  // Determine the active tab based on the current path
+  const currentTab = menuItems.find((item) => location.pathname.startsWith(item.path))?.key || 'clients';
+
   return (
     <>
       {/* Hamburger Button for small screens */}
       <Button
-  className={`hamburger-button ${collapsed ? 'sidebar-collapsed' : ''}`}
-  type="primary"
-  onClick={toggleCollapsed}
-  icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-  style={{
-    position: 'fixed',
-    top: 16,
-    left: collapsed ? 16 : 266, // Adjust based on sidebar state
-    zIndex: 1000,
-  }}
-/>
+        className={`hamburger-button ${collapsed ? 'sidebar-collapsed' : ''}`}
+        type="primary"
+        onClick={toggleCollapsed}
+        icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+        style={{
+          position: 'fixed',
+          top: 16,
+          left: collapsed ? 16 : 266, // Adjust based on sidebar state
+          zIndex: 1000,
+        }}
+      />
 
       <Sider
         collapsible
@@ -84,8 +89,8 @@ const Sidebar: React.FC<SidebarProps> = ({ onCollapse }) => {
         <div className="logo">Logo</div>
         <Menu
           theme="light"
-          defaultSelectedKeys={['clients']}
           mode="inline"
+          selectedKeys={[currentTab]} // Highlight the current tab
           onClick={({ key }) => {
             const path = menuItems.find((item) => item.key === key)?.path || '/';
             navigate(path);

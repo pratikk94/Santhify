@@ -13,6 +13,17 @@
   transition: all 0.3s ease; /* Smooth transition for logo adjustments */
 }
 
+/* Highlight selected menu item */
+.ant-menu-item-selected {
+  font-weight: bold;
+  background: #e6e6e6;
+  color: #4b49ac;
+}
+
+.ant-menu-item-selected .anticon {
+  color: #3a398e;
+}
+
 /* Hamburger Button */
 .hamburger-button {
   background: #4b49ac;
