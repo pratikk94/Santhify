@@ -12,6 +12,7 @@ import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import UserProfile from './components/Dashboard/UserProfile/UserProfile';
 import MyGroups from './components/Groups/MyGroup/MyGroups';
+import AccountComp from './components/Account/Account';
 
 const App: React.FC = () => {
   return (
@@ -77,7 +78,7 @@ const App: React.FC = () => {
               path="/account"
               element={
                 <ProtectedRoute>
-                  <Account />
+                  <AccountComp />
                 </ProtectedRoute>
               }
             />
