@@ -1,87 +1,93 @@
-/* User Card Container */
-.g-user-card {
+/* Card Container */
+.user-card-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   padding: 16px;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   background-color: #ffffff;
-  width: 10vw; /* Adjust based on container size */
-  height: 20vh; /* Ensure consistent height */
+  width: 220px;
+  height: 200px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
   position: relative;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.g-user-card:hover {
+.user-card-container:hover {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   transform: translateY(-4px);
 }
 
-/* Dropdown Options (Three Dots) */
-.g-user-card-options {
+/* Dropdown Options */
+.user-card-options {
   position: absolute;
   top: 8px;
   right: 8px;
-  font-size: 20px;
-  cursor: pointer;
+  font-size: 18px;
   color: #888888;
-  transition: color 0.2s;
+  cursor: pointer;
+  transition: color 0.3s ease;
 }
 
-.g-user-card-options:hover {
+.user-card-options:hover {
   color: #635cf4;
 }
 
 /* Avatar Section */
-.g-user-card-avatar {
+.user-card-avatar {
   margin-bottom: 12px;
 }
 
-.g-user-card-avatar .ant-avatar {
+.user-card-avatar .ant-avatar {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
 }
 
-/* User Information Section */
-.g-user-card-info {
+/* User Info Section */
+.user-card-info {
   text-align: center;
   margin-bottom: 16px;
 }
 
-.g-user-card-name {
+.user-card-name {
   font-size: 16px;
   font-weight: bold;
   color: #333333;
   margin-bottom: 4px;
 }
 
-.g-user-card-people {
+.user-card-date {
   font-size: 14px;
   color: #888888;
 }
 
-/* Enter Group Button */
-.g-user-card-enter {
-  margin-top: auto;
-  background-color: #635cf4;
-  color: #ffffff;
-  border: none;
-  border-radius: 4px;
+/* Action Buttons */
+.user-card-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
   width: 100%;
-  padding: 8px 12px;
+}
+
+.profile-button,
+.contact-button {
+  flex: 1;
   font-size: 14px;
   font-weight: bold;
   text-align: center;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  border-radius: 8px;
+  border: 1px solid #635cf4;
+  color: #635cf4;
+  background-color: #ffffff;
+  transition: all 0.3s ease;
 }
 
-.g-user-card-enter:hover {
-  background-color: #4a46b4;
-  transform: translateY(-2px);
+.profile-button:hover,
+.contact-button:hover {
+  background-color: #635cf4;
+  color: #ffffff;
 }

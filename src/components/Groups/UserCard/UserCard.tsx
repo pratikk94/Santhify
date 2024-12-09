@@ -7,66 +7,75 @@ interface UserCardProps {
   user: {
     id: number;
     name: string;
-    peopleCount: number;
     initials?: string;
+    dateAdded: string;
     color?: string;
   };
   onProfileClick?: () => void;
   onContactClick?: () => void;
-  onEnterGroup?: () => void; // Optional enter group handler
 }
 
 const UserCard: React.FC<UserCardProps> = ({
   user,
   onProfileClick,
   onContactClick,
-  onEnterGroup,
 }) => {
   const menu = (
     <Menu>
-      <Menu.Item key="edit">Edit Group</Menu.Item>
-      <Menu.Item key="delete">Delete Group</Menu.Item>
+      <Menu.Item key="edit">Edit User</Menu.Item>
+      <Menu.Item key="delete">Delete User</Menu.Item>
     </Menu>
   );
 
   return (
-    <div className="g-user-card" onClick={onEnterGroup} style={{ cursor: 'pointer' }}>
+    <div className="user-card-container">
+      {/* Dropdown Options */}
       <Dropdown overlay={menu} trigger={['click']} placement="topRight">
-        <EllipsisOutlined className="g-user-card-options" />
+        <EllipsisOutlined className="user-card-options" />
       </Dropdown>
-      <div className="g-user-card-avatar">
+
+      {/* Avatar Section */}
+      <div className="user-card-avatar">
         <Avatar
-          size={48}
+          size={56}
           style={{
             backgroundColor: user.color || '#635cf4',
             color: '#fff',
-            fontSize: '24px',
+            fontSize: '20px',
           }}
         >
           {user.initials || user.name[0]}
         </Avatar>
       </div>
-      <div className="g-user-card-info">
-        <p className="g-user-card-name">{user.name}</p>
-        <p className="g-user-card-people">{user.peopleCount} People</p>
+
+      {/* User Info Section */}
+      <div className="user-card-info">
+        <p className="user-card-name">{user.name}</p>
+        <p className="user-card-date">Added: {user.dateAdded}</p>
       </div>
-      <div>
-        {onProfileClick && (
-          <Button type="link" onClick={(e) => {
+
+      {/* Action Buttons */}
+      <div className="user-card-actions">
+        <Button
+          type="default"
+          className="profile-button"
+          onClick={(e) => {
             e.stopPropagation();
-            onProfileClick();
-          }}>
-            Profile
-          </Button>
-        )}
-        {onContactClick && (
-          <Button type="link" onClick={(e) => {
+            onProfileClick && onProfileClick();
+          }}
+        >
+          Profile
+        </Button>
+        <Button
+          type="default"
+          className="contact-button"
+          onClick={(e) => {
             e.stopPropagation();
-            onContactClick();
-          }}>
-            Contact
-          </Button>
-        )}
+            onContactClick && onContactClick();
+          }}
+        >
+          Contact
+        </Button>
       </div>
     </div>
   );
