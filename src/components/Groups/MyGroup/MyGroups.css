@@ -1,0 +1,59 @@
+/* Main Layout */
+.dashboard-layout {
+  display: flex;
+  height: 100vh;
+  transition: all 0.3s ease;
+  background-color: #f9f9f9;
+}
+
+.dashboard-layout.collapsed .dashboard-main {
+  margin-left: 80px; /* Adjust content when sidebar is collapsed */
+}
+
+.dashboard-layout:not(.collapsed) .dashboard-main {
+  margin-left: 250px; /* Adjust content when sidebar is expanded */
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  transition: all 0.3s ease;
+  background-color: #635cf4;
+  overflow: hidden;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.sidebar.collapsed {
+  width: 80px; /* Sidebar collapses to a smaller width */
+}
+
+/* Main Content */
+.dashboard-main {
+  flex-grow: 1;
+  padding: 24px;
+  transition: margin-left 0.3s ease;
+}
+
+/* Top Navigation Bar */
+.TopNav {
+  margin-bottom: 16px;
+}
+
+/* Filters Bar */
+.FiltersBar {
+  margin-bottom: 24px;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+  .dashboard-layout {
+    flex-direction: column;
+  }
+
+  .dashboard-main {
+    margin-left: 0;
+  }
+}

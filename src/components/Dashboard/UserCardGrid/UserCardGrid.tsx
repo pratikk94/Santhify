@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState,  useRef } from 'react';
 import { Pagination } from 'antd';
 import './UserCardsGrid.css';
 import UserCard from '../UserCard/UserCard';
@@ -22,32 +22,14 @@ interface UserCardsGridProps {
   sortOrder: 'asc' | 'desc';
 }
 
-const UserCardsGrid: React.FC<UserCardsGridProps> = ({ searchTerm, filters, sortOrder }) => {
+const UserCardsGrid: React.FC<UserCardsGridProps> = ({
+  searchTerm,
+  filters,
+  sortOrder,
+}) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerRow, setItemsPerRow] = useState(8); // Default to 8 elements per row
+  const pageSize = 8; // Fixed 8 items per page (4 per row * 2 rows)
   const gridRef = useRef<HTMLDivElement>(null);
-
-  // Dynamically calculate the number of items per row
-  useEffect(() => {
-    const calculateItemsPerRow = () => {
-      if (gridRef.current) {
-        const gridWidth = gridRef.current.offsetWidth;
-        const cardWidth = 280; // Width of a single card
-        const items = Math.floor(gridWidth / cardWidth); // Calculate number of items per row
-        setItemsPerRow(items || 1); // Fallback to at least 1 if calculation fails
-      }
-    };
-
-    calculateItemsPerRow(); // Calculate on load
-    window.addEventListener('resize', calculateItemsPerRow); // Recalculate on resize
-
-    return () => {
-      window.removeEventListener('resize', calculateItemsPerRow); // Clean up event listener
-    };
-  }, []);
-
-  // Total items to display per page
-  const pageSize = itemsPerRow * 2;
 
   // Filter users based on search term, filters, and sorting
   const filteredUsers = mockUsers

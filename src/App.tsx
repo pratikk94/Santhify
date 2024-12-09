@@ -6,10 +6,12 @@ import Dashboard from './pages/Dashboard';
 import FileManager from './components/Library/FileManager';
 import Account from './pages/Account';
 import Payments from './pages/Payment';
-import Groups from '../src/components/Groups/Groups';
+import Groups from './components/Groups/Groups';
+// import GroupDetails from './components/Groups/GroupDetails/GroupDetails'
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import UserProfile from './components/Dashboard/UserProfile/UserProfile';
+import MyGroups from './components/Groups/MyGroup/MyGroups';
 
 const App: React.FC = () => {
   return (
@@ -17,7 +19,10 @@ const App: React.FC = () => {
       <div style={{ display: 'flex', minHeight: '100vh', width: '100vw' }}>
         <div style={{ flex: 1 }}>
           <Routes>
+            {/* Public Routes */}
             <Route path="/" element={<Login />} />
+
+            {/* Protected Routes */}
             <Route
               path="/client"
               element={
@@ -56,7 +61,15 @@ const App: React.FC = () => {
               path="/groups"
               element={
                 <ProtectedRoute>
-                  <Groups/>
+                  <Groups />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/groups/:id"
+              element={
+                <ProtectedRoute>
+                  <MyGroups />
                 </ProtectedRoute>
               }
             />
