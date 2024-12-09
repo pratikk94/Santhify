@@ -24,7 +24,7 @@ class UserManagement extends Component<object, UserManagementState> {
     return (
       <div className="ap-app-container">
         <main className="ap-main-content">
-            <UserGrid/>
+            <UserGrid/> 
         </main>
       </div>
     );
