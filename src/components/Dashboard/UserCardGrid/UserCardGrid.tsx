@@ -1,4 +1,4 @@
-import React, { useState,  useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { Pagination } from 'antd';
 import './UserCardsGrid.css';
 import UserCard from '../UserCard/UserCard';
@@ -28,23 +28,19 @@ const UserCardsGrid: React.FC<UserCardsGridProps> = ({
   sortOrder,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 8; // Fixed 8 items per page (4 per row * 2 rows)
+  const pageSize = 12; // Fixed 12 items per page
   const gridRef = useRef<HTMLDivElement>(null);
 
   // Filter users based on search term, filters, and sorting
   const filteredUsers = mockUsers
-    // Search Filter
     .filter((user) => user.name.toLowerCase().includes(searchTerm.toLowerCase()))
-    // Country Filter
     .filter((user) =>
       filters.countries.length ? filters.countries.includes(user.country) : true
     )
-    // Age Range Filter
     .filter((user) => {
       if (!user.age) return true;
       return user.age >= filters.ageRange[0] && user.age <= filters.ageRange[1];
     })
-    // Date Range Filter
     .filter((user) => {
       if (filters.dateRange[0] && filters.dateRange[1]) {
         const userDate = dayjs(user.date_added, 'YYYY-MM-DD');
@@ -52,7 +48,6 @@ const UserCardsGrid: React.FC<UserCardsGridProps> = ({
       }
       return true;
     })
-    // Date Added Filter
     .filter((user) => {
       if (filters.date_added) {
         const userDate = dayjs(user.date_added, 'YYYY-MM-DD');
@@ -60,7 +55,6 @@ const UserCardsGrid: React.FC<UserCardsGridProps> = ({
       }
       return true;
     })
-    // Sort Users
     .sort((a, b) =>
       sortOrder === 'asc' ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name)
     );
@@ -93,7 +87,7 @@ const UserCardsGrid: React.FC<UserCardsGridProps> = ({
             total={filteredUsers.length}
             onChange={handlePageChange}
             className="pagination"
-          />=
+          />
         </>
       ) : (
         <div className="empty-state">No users match the current filters.</div>

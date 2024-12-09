@@ -1,120 +1,76 @@
 /* User Cards Grid */
 .user-cards-grid {
-  padding: 16px;
-  background: #f9f9f9; /* Light gray background for better contrast */
+  padding: 20px;
+  background: #f8f8f8;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  gap: 24px; /* Space between grid and pagination */
-  border-radius: 8px; /* Subtle rounding for a modern look */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  box-sizing: border-box;
+  gap: 20px;
 }
 
 /* User Grid Layout */
 .user-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Maximum 4 items per row */
-  gap: 24px; /* Space between cards */
-  justify-items: center; /* Center-align cards */
-  align-items: stretch; /* Stretch cards to fill available height */
-  width: 100%;
-  box-sizing: border-box;
+  grid-template-columns: repeat(auto-fit, 250px); /* Fixed width for each card */
+  gap: 16px; /* Space between cards */
+  justify-content: center; /* Center-align grid items */
+  align-content: start; /* Align items to the top */
+}
+
+.user-card-wrapper {
+  width: 250px; /* Fixed width for cards */
+  height: 320px; /* Fixed height for cards */
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Prevent content overflow */
 }
 
 /* Responsive Adjustments */
-@media (max-width: 1200px) {
-  .user-grid {
-    grid-template-columns: repeat(3, 1fr); /* 3 items per row for medium screens */
-  }
-}
-
 @media (max-width: 768px) {
   .user-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 items per row for smaller screens */
-    gap: 16px; /* Reduce gap for smaller screens */
+    gap: 12px; /* Reduce gap for smaller screens */
   }
 }
 
 @media (max-width: 480px) {
   .user-grid {
-    grid-template-columns: repeat(1, 1fr); /* 1 item per row for mobile */
-    gap: 12px; /* Reduce gap for small devices */
+    gap: 10px; /* Reduce gap for mobile */
   }
-}
-
-/* User Card Wrapper */
-.user-card-wrapper {
-  width: 100%;
-  max-width: 280px; /* Limit the max width of cards */
-  flex: 1; /* Allow cards to grow and fit evenly */
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
 }
 
 /* Pagination Styling */
 .pagination {
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 16px 0;
-  gap: 8px; /* Add spacing between pagination items */
+  padding: 16px;
 }
 
 .pagination .ant-pagination-item-active {
-  background-color: #f8f8f8; /* Highlight active page */
-  border-color: #635cf4; /* Match border with theme */
-  color: #000;
-  font-weight: bold;
-}
-
-.pagination .ant-pagination-item:hover {
-  border-color: #635cf4; /* Add hover effect to pagination items */
+  background-color: #f8f8f8;
+  color: white;
+  border-color: #b8b8b8;
 }
 
 .pagination .ant-pagination-item {
-  border-radius: 4px; /* Add slight rounding to pagination items */
+  border-radius: 8px;
 }
 
-/* Empty State Styling */
+.pagination .ant-pagination-item:hover {
+  border-color: #b8b8b8;
+}
+
+/* Empty State */
 .empty-state {
   text-align: center;
   font-size: 16px;
-  color: #888888;
-  margin-top: 32px;
-  padding: 16px;
-  background: #ffffff;
-  border: 1px dashed #cccccc;
+  color: #999;
+  padding: 20px;
+  border: 1px dashed #ccc;
   border-radius: 8px;
-  animation: fadeIn 0.3s ease; /* Smooth fade-in animation for empty state */
-}
-
-/* Add animation for empty state */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* User Grid Improvements */
-.user-grid {
-  align-content: start; /* Ensure grid items are aligned to the top */
-}
-
-.user-card-wrapper {
-  display: flex;
-  flex-direction: column; /* Stack content vertically */
-  align-items: center; /* Center-align for consistency */
-}
-
-/* Consistent sizing for all cards */
-.user-card-wrapper {
-  height: 100%; /* Ensure consistent card height */
-  max-height: 320px; /* Optional: Add max height for uniformity */
-  padding: 8px; /* Add slight padding for better spacing */
+  background: #fff;
 }
