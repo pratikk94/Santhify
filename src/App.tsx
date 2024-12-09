@@ -4,7 +4,6 @@ import ProtectedRoute from './authentication/ProtectedRoute';
 import Login from './pages/LoginPage';
 import Dashboard from './pages/Dashboard';
 import FileManager from './components/Library/FileManager';
-import Account from './pages/Account';
 import Payments from './pages/Payment';
 import Groups from './components/Groups/Groups';
 // import GroupDetails from './components/Groups/GroupDetails/GroupDetails'

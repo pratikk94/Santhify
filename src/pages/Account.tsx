@@ -10,7 +10,7 @@ const Account: React.FC = () => {
     <div className="dashboard-layout">
       {/* Sidebar */}
       <Sidebar
-        collapsed={collapsed}
+        
         onCollapse={(isCollapsed) => setCollapsed(isCollapsed)} // Handle collapse
       />
 
