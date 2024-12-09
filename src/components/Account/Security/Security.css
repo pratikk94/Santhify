@@ -1,0 +1,108 @@
+/* Main container for the security section */
+.ap-security-section {
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Security card styling */
+  .ap-security-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.ap-1);
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Card header layout */
+  .ap-security-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  /* Avatar section */
+  .ap-security-avatar {
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+  }
+  
+  .ap-security-icon {
+    font-size: 24px;
+    color: #6c5ce7;
+  }
+  
+  /* Details */
+  .ap-security-details h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+  }
+  
+  .ap-security-password-label {
+    font-size: 14px;
+    color: #6b6b6b;
+    margin-top: 10px;
+  }
+  
+  .ap-security-password {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+    margin: 5px 0 0;
+  }
+  
+  /* Edit button */
+  .ap-security-edit-button {
+    background: none;
+    border: 2px solid #845ef7;
+    color: #845ef7;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 5px 15px;
+    cursor: pointer;
+    transition: background-color 0.ap-3s ease;
+  }
+  
+  .ap-security-edit-button:hover {
+    background-color: #e0d9ff;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .ap-security-card-header {
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+  
+    .ap-security-avatar {
+      width: 40px;
+      height: 40px;
+    }
+  
+    .ap-security-details h3 {
+      font-size: 16px;
+    }
+  
+    .ap-security-password-label {
+      font-size: 12px;
+    }
+  
+    .ap-security-password {
+      font-size: 14px;
+    }
+  
+    .ap-security-edit-button {
+      font-size: 12px;
+      padding: 5px 10px;
+    }
+  }

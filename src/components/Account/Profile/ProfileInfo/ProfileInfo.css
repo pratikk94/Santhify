@@ -1,0 +1,110 @@
+.ap-personal-info-card {
+    background-color: #ffffff;
+    border: 2px solid #b8b8b8; /* Blue border */
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+    box-sizing: border-box;
+  }
+  
+  .ap-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Adjusts layout for smaller screens */
+  }
+  
+  .ap-card-header h2 {
+    margin: 0;
+    font-size: 20px;
+    color: #000000;
+    font-weight: bold;
+  }
+  
+  .ap-edit-button {
+    background: none;
+    border: 2px solid #845ef7;
+    color: #845ef7;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 5px 15px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.ap-3s ease;
+  }
+  
+  .ap-edit-button:hover {
+    background-color: #e0d9ff;
+  }
+  
+  .ap-edit-icon {
+    font-size: 14px;
+    margin-left: 5px;
+  }
+  
+  .ap-card-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns layout for larger screens */
+    gap: 20px;
+  }
+  
+  .ap-info-block {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .ap-info-block strong {
+    font-size: 14px;
+    color: #6b6b6b;
+    margin-bottom: 5px;
+  }
+  
+  .ap-info-block p {
+    font-size: 16px;
+    color: #000000;
+    margin: 0;
+    font-weight: bold;
+  }
+  
+  .ap-verified {
+    color: green;
+    font-size: 14px;
+    margin-left: 5px;
+    font-weight: normal;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .ap-card-content {
+      grid-template-columns: 1fr; /* Single column layout for tablets */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .ap-card-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+  
+    .ap-edit-button {
+      font-size: 12px;
+      padding: 5px 10px;
+    }
+  
+    .ap-card-content {
+      gap: 15px; /* Reduced gap for smaller screens */
+    }
+  
+    .ap-info-block strong {
+      font-size: 12px; /* Smaller font for labels */
+    }
+  
+    .ap-info-block p {
+      font-size: 14px; /* Smaller font for values */
+    }
+  }

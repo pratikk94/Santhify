@@ -1,0 +1,64 @@
+.ap-profile-card {
+    background-color: #f5f0ff; /* Light purple background */
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.ap-1);
+    margin-bottom: 20px;
+  }
+  
+  .ap-profile-card-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .ap-profile-avatar {
+    background-color: #845ef7; /* Purple for avatar */
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+  }
+  
+  .ap-profile-details {
+    flex-grow: 1;
+  }
+  
+  .ap-profile-details h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #4a4a4a;
+    font-weight: bold;
+  }
+  
+  .ap-edit-button {
+    background: none;
+    border: 2px solid #845ef7;
+    color: #845ef7;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 5px 15px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.ap-3s ease;
+  }
+  
+  .ap-edit-button:hover {
+    background-color: #e0d9ff;
+  }
+  
+  .ap-edit-icon {
+    font-size: 14px;
+    margin-left: 5px;
+  }

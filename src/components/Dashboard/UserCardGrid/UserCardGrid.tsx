@@ -93,7 +93,7 @@ const UserCardsGrid: React.FC<UserCardsGridProps> = ({
             total={filteredUsers.length}
             onChange={handlePageChange}
             className="pagination"
-          />
+          />=
         </>
       ) : (
         <div className="empty-state">No users match the current filters.</div>

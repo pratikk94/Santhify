@@ -1,43 +1,22 @@
-import React from 'react';
-import { Route, Routes, NavLink } from 'react-router-dom';
-import '../styles/Account.css';
-
+import React, { useState } from 'react';
+import '../styles/dashboard.css'; // Style for the dashboard layout
 import Sidebar from '../components/Navigation/Sidebar/Sidebar';
-import Dashboard from './Dashboard';
-import FileManager from '../components/Library/FileManager';
+import AccountComp from '../components/Account/Account';
 
 const Account: React.FC = () => {
+  const [collapsed, setCollapsed] = useState<boolean>(false); // State to track sidebar collapse
+
   return (
-    <div className="account-layout">
+    <div className="dashboard-layout">
       {/* Sidebar */}
-      <Sidebar />
+      <Sidebar
+        collapsed={collapsed}
+        onCollapse={(isCollapsed) => setCollapsed(isCollapsed)} // Handle collapse
+      />
 
       {/* Main Content */}
-      <div className="account-main">
-        <nav className="account-nav">
-          <ul>
-            <li>
-              <NavLink 
-                to="/account/dashboard" 
-                className={({ isActive }) => (isActive ? 'active' : '')}
-              >
-                Dashboard
-              </NavLink>
-            </li>
-            <li>
-              <NavLink 
-                to="/account/filemanager" 
-                className={({ isActive }) => (isActive ? 'active' : '')}
-              >
-                File Manager
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
-        <Routes>
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="filemanager" element={<FileManager />} />
-        </Routes>
+      <div className={`dashboard-main ${collapsed ? 'collapsed-sidebar' : ''}`}>
+        <AccountComp />
       </div>
     </div>
   );

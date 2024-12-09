@@ -1,0 +1,96 @@
+.ap-card {
+    background-color: #ffffff;
+    border: 2px solid #b8b8b8; /* Blue border */
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    box-sizing: border-box;
+  }
+  
+  .ap-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .ap-card-header h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+  }
+  
+  .ap-edit-button {
+    background: none;
+    border: 2px solid #4a51e0;
+    color: #4a51e0;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 5px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .ap-edit-button:hover {
+    background-color: #e0e7ff;
+  }
+  
+  .ap-card-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two-column layout for larger screens */
+    gap: 20px;
+  }
+  
+  .ap-card-content div {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .ap-card-content strong {
+    font-size: 14px;
+    color: #6b6b6b;
+    margin-bottom: 5px;
+  }
+  
+  .ap-card-content p {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 25px;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .ap-card-content {
+      grid-template-columns: 1fr; /* Single-column layout for tablets */
+      gap: 15px;
+    }
+  
+    .ap-card-header {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  
+    .ap-edit-button {
+      font-size: 12px;
+      padding: 5px 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .ap-card-header h2 {
+      font-size: 18px;
+    }
+  
+    .ap-card-content strong {
+      font-size: 12px;
+    }
+  
+    .ap-card-content p {
+      font-size: 14px;
+    }
+  }
