@@ -1,0 +1,110 @@
+.dashboard-layout {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.dashboard-main {
+  flex: 1;
+  transition: margin-left 0.3s;
+}
+
+.dashboard-main.collapsed-sidebar {
+  margin-left: 64px; /* Adjust based on your collapsed sidebar width */
+}
+
+.file-manager {
+  padding: 20px;
+}
+
+.file-manager-header {
+  margin-bottom: 20px;
+}
+
+.file-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+.folders-grid,
+.files-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.folder-card,
+.file-card {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.folder-card.highlighted {
+  border-color: #635CF4;
+  box-shadow: 0 0 0 2px rgba(99, 92, 244, 0.2);
+}
+
+.folder-card h3,
+.file-card h3 {
+  margin: 0 0 10px 0;
+  color: #333;
+}
+
+.folder-card p,
+.file-card p {
+  margin: 5px 0;
+  color: #666;
+  font-size: 0.9em;
+}
+
+.empty-message {
+  text-align: center;
+  color: #666;
+  padding: 20px;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 2rem;
+}
+
+.loading-spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 2rem;
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+} 

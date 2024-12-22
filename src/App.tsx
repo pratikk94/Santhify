@@ -13,87 +13,93 @@ import UserProfile from './components/Dashboard/UserProfile/UserProfile';
 import MyGroups from './components/Groups/MyGroup/MyGroups';
 import Account from './pages/Account';
 import UserManagement from './pages/UserManagement';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+// Create a client
+const queryClient = new QueryClient();
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <div style={{ display: 'flex', minHeight: '100vh', width: '100vw' }}>
-        <div style={{ flex: 1 }}>
-          <Routes>
-            {/* Public Routes */}
-            <Route path="/" element={<Login />} />
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        <div style={{ display: 'flex', minHeight: '100vh', width: '100vw' }}>
+          <div style={{ flex: 1 }}>
+            <Routes>
+              {/* Public Routes */}
+              <Route path="/" element={<Login />} />
 
-            {/* Protected Routes */}
-            <Route
-              path="/client"
-              element={
-                <ProtectedRoute>
-                  <Dashboard />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/profile/:userId"
-              element={
-                <ProtectedRoute>
-                  <UserProfile userId='some-user-id' />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/library"
-              element={
-                <ProtectedRoute>
-                  <DndProvider backend={HTML5Backend}>
-                    <FileManager />
-                  </DndProvider>
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/payments"
-              element={
-                <ProtectedRoute>
-                  <Payments />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/groups"
-              element={
-                <ProtectedRoute>
-                  <Groups />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/groups/:id"
-              element={
-                <ProtectedRoute>
-                  <MyGroups />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/account"
-              element={
-                <ProtectedRoute>
-                  <Account />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/user-management"
-              element={
-                <ProtectedRoute>
-                  <UserManagement />
-                </ProtectedRoute>
-              }
-            />
-          </Routes>
+              {/* Protected Routes */}
+              <Route
+                path="/client"
+                element={
+                  <ProtectedRoute>
+                    <Dashboard />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/profile/:userId"
+                element={
+                  <ProtectedRoute>
+                    <UserProfile userId='some-user-id' />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/library"
+                element={
+                  <ProtectedRoute>
+                    <DndProvider backend={HTML5Backend}>
+                      <FileManager />
+                    </DndProvider>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/payments"
+                element={
+                  <ProtectedRoute>
+                    <Payments />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/groups"
+                element={
+                  <ProtectedRoute>
+                    <Groups />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/groups/:id"
+                element={
+                  <ProtectedRoute>
+                    <MyGroups />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/account"
+                element={
+                  <ProtectedRoute>
+                    <Account />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/user-management"
+                element={
+                  <ProtectedRoute>
+                    <UserManagement />
+                  </ProtectedRoute>
+                }
+              />
+            </Routes>
+          </div>
         </div>
-      </div>
-    </Router>
+      </Router>
+    </QueryClientProvider>
   );
 };
 
