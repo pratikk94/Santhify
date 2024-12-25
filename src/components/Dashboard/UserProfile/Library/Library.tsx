@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { Modal, Button, Breadcrumb } from 'antd';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import Folder from '../../../Library/Folder/Folder'; // Ensure the correct path to Folder component
-import File from '../../../Library/File/File'; // Ensure the correct path to File component
 
 interface FileItem {
   id: string;
@@ -88,49 +86,67 @@ const LibraryModal: React.FC<LibraryModalProps> = ({ isVisible, onClose }) => {
     >
       <DndProvider backend={HTML5Backend}>
         <div className="file-manager">
-          <div className="file-manager-header">
-            <Breadcrumb>
-              {path.map((name, index) => (
-                <Breadcrumb.Item key={index}>
-                  <Button
-                    type="link"
-                    onClick={() => moveToPath(index)}
-                    style={{ padding: 0, margin: 0 }}
-                  >
-                    {name}
-                  </Button>
-                </Breadcrumb.Item>
-              ))}
-            </Breadcrumb>
-            <p>{items.length} items</p>
-          </div>
-          <div className="file-sections">
-            <div className="section">
-              <h3>Folders</h3>
-              <div className="folder-grid">
-                {folders.length > 0 ? (
-                  folders.map((folder) => (
-                    <Folder
-                      key={folder.id}
-                      folder={folder}
-                      onDrop={(itemId) => moveItem(itemId, folder.id)}
-                      isHighlighted={highlightedFolder === folder.id}
-                      onClick={() => enterFolder(folder.id, folder.name)}
-                    />
-                  ))
-                ) : (
-                  <div className="empty-message">No folders found.</div>
-                )}
+          <div className="flex flex-col gap-6 p-6">
+            {/* Title and Path Section */}
+            <div className="flex flex-col gap-2">
+              <h1 className="text-3xl font-bold text-gray-800">My Library</h1>
+              
+              {/* Custom Breadcrumb */}
+              <div className="flex items-center gap-2 text-sm">
+                {path.map((name, index) => (
+                  <div key={index} className="flex items-center">
+                    {index > 0 && (
+                      <span className="mx-2 text-gray-400">/</span>
+                    )}
+                    <button
+                      onClick={() => moveToPath(index)}
+                      className={`hover:text-blue-600 transition-colors ${
+                        index === path.length - 1 
+                          ? 'text-gray-600 font-medium'
+                          : 'text-gray-400'
+                      }`}
+                    >
+                      {name}
+                    </button>
+                  </div>
+                ))}
               </div>
             </div>
-            <div className="section">
-              <h3>Files</h3>
-              <div className="file-grid">
-                {files.length > 0 ? (
-                  files.map((file) => <File key={file.id} file={file} />)
-                ) : (
-                  <div className="empty-message">No files found.</div>
-                )}
+
+            {/* Content Sections */}
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <h2 className="text-xl font-semibold text-gray-700 border-b pb-2">
+                  Folders
+                </h2>
+                {/* <div className="folder-grid">
+                  {folders.length > 0 ? (
+                    folders.map((folder) => (
+                      <Folder
+                        key={folder.id}
+                        folder={folder}
+                        onDrop={(itemId) => moveItem(itemId, folder.id)}
+                        isHighlighted={highlightedFolder === folder.id}
+                        onClick={() => enterFolder(folder.id, folder.name)}
+                      />
+                    ))
+                  ) : (
+                    <div className="text-gray-500 italic">No folders found.</div>
+                  )}
+                </div> */}
+              </div>
+
+              <div className="space-y-4">
+                <h2 className="text-xl font-semibold text-gray-700 border-b pb-2">
+                  Files
+                </h2>
+                {/* <div className="file-grid">
+                  {files.length > 0 ? (
+                    files.map((file) => <File key={file.id} file={file} />)
+                  ) : (
+                    <div className="text-gray-500 italic">No files found.</div>
+                  )}
+                </div> */}
               </div>
             </div>
           </div>

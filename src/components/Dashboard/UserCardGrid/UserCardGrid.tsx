@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 import { Pagination } from 'antd';
-import './UserCardsGrid.css';
 import UserCard from '../UserCard/UserCard';
 import mockUsers from '../../../data/mockUsers';
 import dayjs, { Dayjs } from 'dayjs';
@@ -71,26 +70,29 @@ const UserCardsGrid: React.FC<UserCardsGridProps> = ({
   };
 
   return (
-    <div className="user-cards-grid">
+    <div className="w-full p-6">
       {filteredUsers.length > 0 ? (
         <>
-          <div className="user-grid" ref={gridRef}>
+          <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {paginatedUsers.map((user) => (
-              <div key={user.id} className="user-card-wrapper">
+              <div key={user.id} className="w-full">
                 <UserCard user={user} />
               </div>
             ))}
           </div>
-          <Pagination
-            current={currentPage}
-            pageSize={pageSize}
-            total={filteredUsers.length}
-            onChange={handlePageChange}
-            className="pagination"
-          />
+          <div className="mt-8 flex justify-center">
+            <Pagination
+              current={currentPage}
+              pageSize={pageSize}
+              total={filteredUsers.length}
+              onChange={handlePageChange}
+            />
+          </div>
         </>
       ) : (
-        <div className="empty-state">No users match the current filters.</div>
+        <div className="flex justify-center items-center h-64 text-gray-500 text-lg">
+          No users match the current filters.
+        </div>
       )}
     </div>
   );

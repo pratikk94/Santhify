@@ -1,111 +1,136 @@
-import React, { useState, useEffect } from 'react';
-import { Layout, Menu, Button } from 'antd';
-import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  UserOutlined,
-  TeamOutlined,
-  BookOutlined,
-  DollarOutlined,
-  SettingOutlined,
-  UserSwitchOutlined 
-} from '@ant-design/icons';
-import { useNavigate, useLocation } from 'react-router-dom'; // Added `useLocation` for highlighting
-import '../Sidebar/sidebar.css';
+"use client"
 
-const { Sider } = Layout;
+import { useState, useEffect } from 'react'
+import { X, User, Users, Book, DollarSign, Settings, UserPlus, ChevronLeft } from 'lucide-react'
+import { Link, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface SidebarProps {
-  onCollapse?: (collapsed: boolean) => void; // Optional callback
+  onCollapse?: (collapsed: boolean) => void;
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ onCollapse }) => {
-  const [collapsed, setCollapsed] = useState<boolean>(true);
-  const location = useLocation(); // Get the current location
-  const navigate = useNavigate();
+  const [collapsed, setCollapsed] = useState(false)
+  const location = useLocation();
 
-  // Adjust sidebar based on screen size
   useEffect(() => {
     const handleResize = () => {
-      setCollapsed(window.innerWidth < 768);
-    };
+      setCollapsed(window.innerWidth < 768)
+    }
 
-    handleResize(); // Set initial state
-    window.addEventListener('resize', handleResize);
+    handleResize()
+    window.addEventListener('resize', handleResize)
 
     return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   const toggleCollapsed = () => {
-    const newCollapsed = !collapsed;
-    setCollapsed(newCollapsed);
+    const newCollapsed = !collapsed
+    setCollapsed(newCollapsed)
     if (onCollapse) {
-      onCollapse(newCollapsed); // Notify parent only if onCollapse is defined
+      onCollapse(newCollapsed)
     }
-  };
+  }
 
   const menuItems = [
-    { key: 'clients', icon: <UserOutlined />, label: 'Clients', path: '/client' },
-    { key: 'groups', icon: <TeamOutlined />, label: 'Groups', path: '/groups' },
-    { key: 'library', icon: <BookOutlined />, label: 'Library', path: '/library' },
-    { key: 'payments', icon: <DollarOutlined />, label: 'Payments', path: '/payments' },
-    { key: 'account', icon: <SettingOutlined />, label: 'Account', path: '/account' },
-    { key: 'management', icon: <UserSwitchOutlined />, label: 'UserManagement', path:'/user-management'},
-  ];
-
-  // Determine the active tab based on the current path
-  const currentTab = menuItems.find((item) => location.pathname.startsWith(item.path))?.key || 'clients';
+    { key: 'clients', icon: User, label: 'Clients', path: '/client' },
+    { key: 'groups', icon: Users, label: 'Groups', path: '/groups' },
+    { key: 'library', icon: Book, label: 'Library', path: '/library' },
+    { key: 'payments', icon: DollarSign, label: 'Payments', path: '/payments' },
+    { key: 'account', icon: Settings, label: 'Account', path: '/account' },
+    { key: 'management', icon: UserPlus, label: 'User Management', path: '/user-management' },
+  ]
 
   return (
-    <>
-      {/* Hamburger Button for small screens */}
-      <Button
-        className={`hamburger-button ${collapsed ? 'sidebar-collapsed' : ''}`}
-        type="primary"
-        onClick={toggleCollapsed}
-        icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-        style={{
-          position: 'fixed',
-          top: 16,
-          left: collapsed ? 16 : 266, // Adjust based on sidebar state
-          zIndex: 1000,
+    <div className="fixed inset-y-0 left-0 z-50">
+      <motion.aside
+        initial={false}
+        animate={{
+          width: collapsed ? 64 : 256,
+          transition: {
+            type: "spring",
+            stiffness: 300,
+            damping: 30
+          }
         }}
-      />
-
-      <Sider
-        collapsible
-        collapsed={collapsed}
-        onCollapse={(collapsed) => setCollapsed(collapsed)}
-        width={250}
-        collapsedWidth={0}
-        style={{
-          height: '100vh',
-          background: '#ffffff',
-          position: 'fixed',
-          zIndex: 999,
-          borderRight: '1px solid #e0e0e0',
-        }}
+        className="h-full bg-white shadow-lg flex flex-col"
       >
-        <div className="logo">Logo</div>
-        <Menu
-          theme="light"
-          mode="inline"
-          selectedKeys={[currentTab]} // Highlight the current tab
-          onClick={({ key }) => {
-            const path = menuItems.find((item) => item.key === key)?.path || '/';
-            navigate(path);
-          }}
-          items={menuItems.map(({ key, icon, label }) => ({
-            key,
-            icon,
-            label,
-          }))}
-        />
-      </Sider>
-    </>
-  );
-};
+        <div className="flex items-center justify-between p-4 border-b">
+          <AnimatePresence mode="wait">
+            {!collapsed && (
+              <motion.h2
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.2 }}
+                className="text-xl font-semibold"
+              >
+                Dr. Santhify
+              </motion.h2>
+            )}
+          </AnimatePresence>
+          <button onClick={toggleCollapsed} className="lg:hidden">
+            <X className="h-6 w-6" />
+          </button>
+        </div>
+        <nav className="flex-1 p-4 overflow-y-auto">
+          <ul className="space-y-2">
+            {menuItems.map((item) => (
+              <li key={item.key}>
+                <Link
+                  to={item.path}
+                  className={`flex items-center p-2 rounded-md transition-all duration-200 ${location.pathname.startsWith(item.path)
+                      ? 'bg-blue-100 text-blue-600'
+                      : 'text-gray-700 hover:bg-gray-100'
+                    }`}
+                >
+                  <item.icon className="h-5 w-5" />
+                  <AnimatePresence mode="wait">
+                    {!collapsed && (
+                      <motion.span
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ 
+                          duration: 0.2,
+                          ease: "easeInOut"
+                        }}
+                        className="ml-2 whitespace-nowrap"
+                      >
+                        {item.label}
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </motion.aside>
 
-export default Sidebar;
+      <motion.button
+        initial={false}
+        animate={{
+          left: collapsed ? 50 : 240,
+          rotate: collapsed ? 180 : 0
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 300,
+          damping: 30
+        }}
+        className="absolute top-1/2 -translate-y-1/2 -right-[-16px] z-50 w-8 h-8 rounded-full bg-blue-500 text-white hover:bg-blue-600 transition-colors duration-200 flex items-center justify-center shadow-md overflow-visible"
+        style={{
+          transform: "translateX(-50%)"
+        }}
+        onClick={toggleCollapsed}
+      >
+        <ChevronLeft className="h-4 w-4" />
+      </motion.button>
+    </div>
+  )
+}
+
+export default Sidebar

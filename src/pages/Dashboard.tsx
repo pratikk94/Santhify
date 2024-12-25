@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import Sidebar from '../components/Navigation/Sidebar/Sidebar';
 import '../styles/dashboard.css';
-import TopNav from '../components/Navigation/TopNav/TopNav';
-// import OverviewHeader from '../components/Navigation/OverviewHeader/OverviewHeader';
 import StatsCards from '../components/Dashboard/StatsCard/StatsCard';
 import UserCardsGrid from '../components/Dashboard/UserCardGrid/UserCardGrid';
 import FiltersBar from '../components/Dashboard/FiltersBar/FiltersBar';
@@ -17,7 +14,6 @@ interface FilterCriteria {
 }
 
 const Dashboard: React.FC = () => {
-  const [collapsed, setCollapsed] = useState<boolean>(false); // Track sidebar state
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
   const [filters, setFilters] = useState<FilterCriteria>({
@@ -43,22 +39,18 @@ const Dashboard: React.FC = () => {
     );
 
   return (
-    <div className="dashboard-layout">
-      <Sidebar onCollapse={(isCollapsed) => setCollapsed(isCollapsed)} />
-      <div className={`dashboard-main ${collapsed ? 'collapsed-sidebar' : ''}`}>
-        <TopNav />
-        {/* <OverviewHeader /> */}
-        <StatsCards />
-        <FiltersBar
-          onSearch={handleSearch}
-          onSortBy={handleSortBy}
-          onFilterApply={handleFilterApply}
-          onAddUser={handleAddUser} // Added this prop
-          totalUsers={filteredUsers.length}
-        />
-        <UserCardsGrid searchTerm={searchTerm} filters={filters} sortOrder={sortOrder} />
-      </div>
-    </div>
+    <>
+      <StatsCards />
+      <FiltersBar
+        onSearch={handleSearch}
+        onSortBy={handleSortBy}
+        onFilterApply={handleFilterApply}
+        onAddUser={handleAddUser} // Added this prop
+        totalUsers={filteredUsers.length}
+      />
+      <UserCardsGrid searchTerm={searchTerm} filters={filters} sortOrder={sortOrder} />
+    </>
+
   );
 };
 
